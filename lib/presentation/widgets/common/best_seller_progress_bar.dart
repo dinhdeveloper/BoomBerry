@@ -118,7 +118,7 @@ class _BestSellerProgressBarState extends State<BestSellerProgressBar>
                         Text(
                           text,
                           style: TextStyle(
-                            fontFamily: Assets.SfProMediumItalic,
+                            fontFamily: Assets.sfProMediumItalic,
                             fontWeight: FontWeight.w700,
                             fontSize: widget.height * 0.7,
                             height: 1.0,

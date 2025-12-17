@@ -48,7 +48,7 @@ class UnitText extends StatelessWidget {
       style: TextStyle(
         height: height,
         fontSize: fontSize,
-        fontFamily: fontFamily ?? Assets.SfProRegular,
+        fontFamily: fontFamily ?? Assets.sfProRegular,
         fontWeight: fontWeight ?? FontWeight.w400,
         color: color ?? Colors.black,
         decoration: decoration,

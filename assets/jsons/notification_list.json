@@ -1,0 +1,44 @@
+{
+  "notifications": [
+    {
+      "date": "Thứ 7 ngày 15/12/2025",
+      "items": [
+        {
+          "title": "Đặt hàng thành công",
+          "desc": "Bạn đã đặt đơn hàng mua coffee thành công, đơn hàng của bạn sẽ đến sớm nhất.",
+          "time": "18:40 15/12/2025"
+        },
+        {
+          "title": "Đơn hàng đang giao",
+          "desc": "Đơn hàng của bạn đang được giao, vui lòng chờ.",
+          "time": "19:15 15/12/2025"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 3 ngày 14/12/2025",
+      "items": [
+        {
+          "title": "Nhận voucher thành công",
+          "desc": "Bạn đã nhận voucher giảm giá 50% tại DinhTC Coffee.",
+          "time": "09:20 14/12/2025"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 2 ngày 13/12/2025",
+      "items": [
+        {
+          "title": "Tích điểm thành công",
+          "desc": "Bạn đã tích thành công 20 điểm tại DinhTC Coffee.",
+          "time": "12:30 13/12/2025"
+        },
+        {
+          "title": "Tích điểm thành công",
+          "desc": "Bạn đã tích thành công 15 điểm tại DinhTC Coffee.",
+          "time": "15:45 13/12/2025"
+        }
+      ]
+    }
+  ]
+}

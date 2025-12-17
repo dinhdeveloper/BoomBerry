@@ -4,5 +4,6 @@ class AppColors {
   static const colorView = Color(0xFF74F100);
   static const colorText = Color(0xFF000000);
   static const colorButtonHome = Color(0xFFF4C46F);
+  static const colorButtonBold = Color(0xFF815406);
   static const colorOverlayHome = Color(0x30FFFFFF);
 }

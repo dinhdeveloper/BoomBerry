@@ -35,10 +35,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.SfProRegular),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.sfProRegular),
                     decoration: InputDecoration(
                       hintText: 'Nhập số điện thoại',
-                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.SfProRegular),
+                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.sfProRegular),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40),
                         borderSide: const BorderSide(color: Colors.grey, width: 1),
@@ -60,10 +60,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: TextField(
                     keyboardType: TextInputType.text,
                     //inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.SfProRegular),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.sfProRegular),
                     decoration: InputDecoration(
                       hintText: 'Nhập họ và tên',
-                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.SfProRegular),
+                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.sfProRegular),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40),
                         borderSide: const BorderSide(color: Colors.grey, width: 1),

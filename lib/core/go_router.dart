@@ -22,7 +22,7 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-      path: PathRouter.LOGIN_SCREEN,
+      path: PathRouter.loginScreen,
       pageBuilder: (context, state) {
         return AppNavigator.buildPage(
           child: const LoginScreen(),
@@ -33,7 +33,7 @@ final GoRouter router = GoRouter(
     ),
 
     GoRoute(
-      path: PathRouter.REGISTER_SCREEN,
+      path: PathRouter.registerScreen,
       pageBuilder: (context, state) {
         return AppNavigator.buildPage(
           child: const RegisterScreen(),
@@ -44,7 +44,7 @@ final GoRouter router = GoRouter(
     ),
 
     GoRoute(
-      path: PathRouter.NOTIFICATION_LIST_SCREEN,
+      path: PathRouter.notificationListScreen,
       pageBuilder: (context, state) {
         return AppNavigator.buildPage(
           child: const NotificationListScreen(),

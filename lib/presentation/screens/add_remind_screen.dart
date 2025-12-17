@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 
-class AddRemindScreen extends StatefulWidget {
-  const AddRemindScreen({super.key});
+class ScanQrCodeScreen extends StatefulWidget {
+  const ScanQrCodeScreen({super.key});
 
   @override
-  State<AddRemindScreen> createState() => _AddRemindScreenState();
+  State<ScanQrCodeScreen> createState() => _ScanQrCodeScreenState();
 }
 
-class _AddRemindScreenState extends State<AddRemindScreen> {
+class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Container(color: Colors.red, child: SizedBox()));
+        backgroundColor: Colors.white,
+        body: Center(child: UnitText(text: "ScanQrCodeScreen")));
   }
 }

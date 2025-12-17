@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:remindbless/core/app_assets.dart';
-import 'package:remindbless/core/app_routes.dart';
 import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/data_home.dart';
 import 'package:remindbless/presentation/screens/extension_screen/extension_home_two_screen.dart';
-import 'package:remindbless/presentation/screens/setting_screen.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 import 'extension_screen/extension_home_child_screen.dart';
 import 'extension_screen/extension_home_screen.dart';
@@ -64,15 +61,15 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   UnitText(
-                    text: "DinhTC Coffee",
+                    text: "BoomBerry Coffee",
                     fontSize: 20,
                     color: Colors.white,
-                    fontFamily: Assets.SfProBlackItalic,
+                    fontFamily: Assets.sfProBlackItalic,
                   ),
 
                   GestureDetector(
                     onTap: (){
-                      context.push(PathRouter.LOGIN_SCREEN);
+                      context.push(PathRouter.loginScreen);
                     },
                     child: Container(color: Colors.transparent,
                       child: Padding(
@@ -81,7 +78,7 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
                           text: "Đăng nhập",
                           fontSize: 15,
                           color: Colors.white,
-                          fontFamily: Assets.SfProMedium,
+                          fontFamily: Assets.sfProMedium,
                         ),
                       ),
                     ),
@@ -126,9 +123,9 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
 
                                 const SizedBox(height: 15),
                                 UnitText(
-                                  text: "Danh Mục Bạn Chọn",
+                                  text: "Danh Mục Cho Bạn",
                                   fontSize: 16,
-                                  fontFamily: Assets.SfProBlackItalic,
+                                  fontFamily: Assets.sfProBlackItalic,
                                 ),
                                 const SizedBox(height: 10),
 

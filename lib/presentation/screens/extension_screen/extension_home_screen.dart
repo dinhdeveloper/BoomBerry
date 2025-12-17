@@ -30,7 +30,7 @@ extension ExHomeScreen on HomeScreenState{
             const SizedBox(width: 10),
             GestureDetector(
               onTap: (){
-                context.push(PathRouter.NOTIFICATION_LIST_SCREEN);
+                context.push(PathRouter.notificationListScreen);
               },
               child: Container(
                 color: Colors.transparent,
@@ -92,9 +92,9 @@ extension ExHomeScreen on HomeScreenState{
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SvgPicture.asset(Assets.iconTicket, color: Colors.grey, width: 20,height: 20),
+                    SvgPicture.asset(Assets.iconGift, color: Colors.grey, width: 20,height: 20),
                     const SizedBox(width: 5),
-                    UnitText(text: "18", fontWeight: FontWeight.w500, fontFamily: Assets.SfProMedium),
+                    UnitText(text: "18", fontWeight: FontWeight.w500, fontFamily: Assets.sfProMedium),
                   ],
                 ),
               ),
@@ -136,7 +136,7 @@ extension ExHomeScreen on HomeScreenState{
                 UnitText(
                   text: "128.914.999",
                   fontWeight: FontWeight.w500,
-                  fontFamily: Assets.SfProMedium,
+                  fontFamily: Assets.sfProMedium,
                 ),
               ],
             ),
@@ -195,7 +195,7 @@ class IconTile extends StatelessWidget {
   final double boxSize;
   final double imageSize;
 
-  const IconTile({
+  const IconTile({super.key,
     required this.assetPath,
     required this.label,
     required this.boxSize,
@@ -242,21 +242,4 @@ class IconTile extends StatelessWidget {
       ],
     );
   }
-}
-
-// Simple scallop painter (decorative)
-class _ScallopPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = const Color(0xFFFFF1E8);
-    final double radius = 8;
-    double x = 0;
-    while (x < size.width) {
-      canvas.drawCircle(Offset(x + radius, 8), radius, paint);
-      x += radius * 2;
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

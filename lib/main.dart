@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remindbless/presentation/screens/notification_list_screen.dart';
-import 'package:remindbless/presentation/screens/root_screen.dart';
 
 import 'core/go_router.dart';
 

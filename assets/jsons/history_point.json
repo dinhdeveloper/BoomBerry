@@ -1,0 +1,134 @@
+{
+  "history": [
+    {
+      "date": "Thứ 2 ngày 01/03/2023",
+      "items": [
+        {
+          "title": "Tích 10 điểm thành công",
+          "desc": "Bạn đã tích thành công 10 điểm tại DinhTC Coffee.",
+          "time": "09:15 01/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 11 điểm thành công",
+          "desc": "Bạn đã tích thành công 11 điểm tại DinhTC Coffee.",
+          "time": "10:30 01/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 12 điểm thành công",
+          "desc": "Bạn đã tích thành công 12 điểm tại DinhTC Coffee.",
+          "time": "14:45 01/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 3 ngày 02/03/2023",
+      "items": [
+        {
+          "title": "Tích 13 điểm thành công",
+          "desc": "Bạn đã tích thành công 13 điểm tại DinhTC Coffee.",
+          "time": "08:20 02/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 14 điểm thành công",
+          "desc": "Bạn đã tích thành công 14 điểm tại DinhTC Coffee.",
+          "time": "11:40 02/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 4 ngày 03/03/2023",
+      "items": [
+        {
+          "title": "Tích 15 điểm thành công",
+          "desc": "Bạn đã tích thành công 15 điểm tại DinhTC Coffee.",
+          "time": "09:00 03/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 16 điểm thành công",
+          "desc": "Bạn đã tích thành công 16 điểm tại DinhTC Coffee.",
+          "time": "12:30 03/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 17 điểm thành công",
+          "desc": "Bạn đã tích thành công 17 điểm tại DinhTC Coffee.",
+          "time": "15:45 03/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 18 điểm thành công",
+          "desc": "Bạn đã tích thành công 18 điểm tại DinhTC Coffee.",
+          "time": "17:20 03/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 19 điểm thành công",
+          "desc": "Bạn đã tích thành công 19 điểm tại DinhTC Coffee.",
+          "time": "19:10 03/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 5 ngày 04/03/2023",
+      "items": [
+        {
+          "title": "Tích 20 điểm thành công",
+          "desc": "Bạn đã tích thành công 20 điểm tại DinhTC Coffee.",
+          "time": "08:45 04/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 21 điểm thành công",
+          "desc": "Bạn đã tích thành công 21 điểm tại DinhTC Coffee.",
+          "time": "10:50 04/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        }
+      ]
+    },
+    {
+      "date": "Thứ 3 ngày 05/03/2023",
+      "items": [
+        {
+          "title": "Tích 22 điểm thành công",
+          "desc": "Bạn đã tích thành công 22 điểm tại DinhTC Coffee.",
+          "time": "09:20 05/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 23 điểm thành công",
+          "desc": "Bạn đã tích thành công 23 điểm tại DinhTC Coffee.",
+          "time": "13:15 05/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        },
+        {
+          "title": "Tích 24 điểm thành công",
+          "desc": "Bạn đã tích thành công 24 điểm tại DinhTC Coffee.",
+          "time": "15:45 05/03/2023",
+          "icon": "assets/images/notification_3d.png",
+          "color": "0xFF4CAF50"
+        }
+      ]
+    }
+  ]
+}

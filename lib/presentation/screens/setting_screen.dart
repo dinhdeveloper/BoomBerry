@@ -53,8 +53,8 @@ class _SettingScreenState extends State<SettingScreen> {
               ),
             ),
             const SizedBox(height: 5),
-            Center(child: UnitText(text: "Trần Cảnh Dinh", fontFamily: Assets.SfProMedium, fontSize: 16)),
-            Center(child: UnitText(text: "0975.469.232", fontFamily: Assets.SfProLight, fontSize: 16,color: Colors.black45)),
+            Center(child: UnitText(text: "Trần Cảnh Dinh", fontFamily: Assets.sfProMedium, fontSize: 16)),
+            Center(child: UnitText(text: "0975.469.232", fontFamily: Assets.sfProLight, fontSize: 16,color: Colors.black45)),
             const SizedBox(height: 15),
             Center(child: Container(color: Colors.black12, height: 0.5, width: MediaQuery.of(context).size.width - 40)),
             const SizedBox(height: 55),
@@ -80,7 +80,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Chính sách bảo mật thông tin", fontFamily: Assets.SfProRegular,
+                        text: "Chính sách Bảo Mật Thông Tin", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],
@@ -94,7 +94,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Chính sách Bảo Mật Dữ Liệu Cá Nhân", fontFamily: Assets.SfProRegular,
+                        text: "Chính sách Bảo Mật Dữ Liệu Cá Nhân", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],
@@ -108,7 +108,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Đơn hàng đã mua", fontFamily: Assets.SfProRegular,
+                        text: "Đơn hàng đã mua", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],
@@ -122,7 +122,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Danh sách yêu thích", fontFamily: Assets.SfProRegular,
+                        text: "Danh sách yêu thích", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],
@@ -136,11 +136,12 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Hotline: 0975.469.232", fontFamily: Assets.SfProRegular,
+                        text: "Hotline: 0975.469.232", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],
                   ),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15),
                     child: Center(child: Container(color: Colors.black12, height: 0.5, width: MediaQuery.of(context).size.width - 100)),
@@ -150,7 +151,7 @@ class _SettingScreenState extends State<SettingScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       UnitText(
-                        text: "Liên hệ", fontFamily: Assets.SfProRegular,
+                        text: "Đăng xuất", fontFamily: Assets.sfProRegular,
                       ),
                       SvgPicture.asset(Assets.iconNextAction,width: 14,height: 14)
                     ],

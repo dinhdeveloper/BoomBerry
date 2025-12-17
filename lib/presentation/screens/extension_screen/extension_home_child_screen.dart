@@ -23,7 +23,7 @@ extension ExHomeChild on HomeScreenState {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            UnitText(text: "Mega Sale Thứ 4\nKhao Lớn", fontSize: 18, fontFamily: Assets.SfProBlackItalic),
+            UnitText(text: "Mega Sale Thứ 4\nKhao Lớn", fontSize: 18, fontFamily: Assets.sfProBlackItalic),
             Image.asset(Assets.imgMegaSale),
           ],
         ),
@@ -67,14 +67,14 @@ extension ExHomeChild on HomeScreenState {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-        UnitText(text: itemSale?['title'].toString() ?? "Đồ ăn healthy buổi trưa",fontFamily: Assets.SfProMedium, fontWeight: FontWeight.w700, fontSize: 14, maxLines: 2),
+        UnitText(text: itemSale?['title'].toString() ?? "Đồ ăn healthy buổi trưa",fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700, fontSize: 14, maxLines: 2),
         const Spacer(),
         Row(children: [
-          UnitText(text: itemSale?['discount'].toString() ?? "-50%",fontFamily: Assets.SfProMedium, fontSize: 12,color: Colors.green[500]),
+          UnitText(text: itemSale?['discount'].toString() ?? "-50%",fontFamily: Assets.sfProMedium, fontSize: 12,color: Colors.green[500]),
           const SizedBox(width: 5),
-          UnitText(text: formatVND(int.parse(itemSale?['oldPrice'].toString() ?? "0")),fontFamily: Assets.SfProMedium, fontSize: 12, lineThrough: true, color: Colors.grey, lineThroughColor:Colors.grey ),
+          UnitText(text: formatVND(int.parse(itemSale?['oldPrice'].toString() ?? "0")),fontFamily: Assets.sfProMedium, fontSize: 12, lineThrough: true, color: Colors.grey, lineThroughColor:Colors.grey ),
         ]),
-            UnitText(text: "${formatVND(int.parse(itemSale?['price'].toString() ?? "0"))} VNĐ",fontFamily: Assets.SfProMedium, fontWeight: FontWeight.w700, fontSize: 14, maxLines: 1),
+            UnitText(text: "${formatVND(int.parse(itemSale?['price'].toString() ?? "0"))} VNĐ",fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700, fontSize: 14, maxLines: 1),
       ]),
     );
   }
@@ -129,14 +129,14 @@ extension ExHomeChild on HomeScreenState {
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            UnitText(text: itemSale?['title'].toString() ?? "Đồ ăn healthy buổi trưa",fontFamily: Assets.SfProMedium, fontWeight: FontWeight.w700),
+            UnitText(text: itemSale?['title'].toString() ?? "Đồ ăn healthy buổi trưa",fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700),
             const Spacer(),
             Row(children: [
-              UnitText(text: itemSale?['discount'].toString() ?? "-50%",fontFamily: Assets.SfProMedium, fontSize: 13,color: Colors.green[500]),
+              UnitText(text: itemSale?['discount'].toString() ?? "-50%",fontFamily: Assets.sfProMedium, fontSize: 13,color: Colors.green[500]),
               const SizedBox(width: 5),
-              UnitText(text: formatVND(int.parse(itemSale?['oldPrice'].toString() ?? "0")),fontFamily: Assets.SfProMedium, fontSize: 13, lineThrough: true, color: Colors.grey, lineThroughColor:Colors.grey ),
+              UnitText(text: formatVND(int.parse(itemSale?['oldPrice'].toString() ?? "0")),fontFamily: Assets.sfProMedium, fontSize: 13, lineThrough: true, color: Colors.grey, lineThroughColor:Colors.grey ),
             ]),
-            UnitText(text: "${formatVND(int.parse(itemSale?['price'].toString() ?? "0"))} VNĐ",fontFamily: Assets.SfProMedium, fontWeight: FontWeight.w700),
+            UnitText(text: "${formatVND(int.parse(itemSale?['price'].toString() ?? "0"))} VNĐ",fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700),
           ]),
     );
   }
@@ -165,10 +165,10 @@ class TicketWidget extends StatefulWidget {
   final List<BoxShadow>? shadow;
 
   @override
-  _TicketWidgetState createState() => _TicketWidgetState();
+  TicketWidgetState createState() => TicketWidgetState();
 }
 
-class _TicketWidgetState extends State<TicketWidget> {
+class TicketWidgetState extends State<TicketWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipPath(

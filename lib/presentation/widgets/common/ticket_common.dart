@@ -7,7 +7,7 @@ class CouponCard extends StatelessWidget {
   /// Creates a vertical coupon card widget that takes two children
   /// with the properties that defines the shape of the card.
   const CouponCard({
-    Key? key,
+    super.key,
     required this.firstChild,
     required this.secondChild,
     this.width,
@@ -22,7 +22,7 @@ class CouponCard extends StatelessWidget {
     this.borderColor,
     this.shadow,
     this.border,
-  }) : super(key: key);
+  });
 
   /// The small child or first.
   final Widget firstChild;
@@ -349,7 +349,7 @@ class CouponClipper extends CustomClipper<Path> {
 /// EXAMPLE
 ///
 class HorizontalCouponExample1 extends StatelessWidget {
-  const HorizontalCouponExample1({Key? key}) : super(key: key);
+  const HorizontalCouponExample1({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -377,7 +377,7 @@ class HorizontalCouponExample1 extends StatelessWidget {
 
 
 class HorizontalCouponExample2 extends StatelessWidget {
-  const HorizontalCouponExample2({Key? key}) : super(key: key);
+  const HorizontalCouponExample2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -406,7 +406,7 @@ class HorizontalCouponExample2 extends StatelessWidget {
 }
 
 class VerticalCouponExample extends StatelessWidget {
-  const VerticalCouponExample({Key? key}) : super(key: key);
+  const VerticalCouponExample({super.key});
 
   @override
   Widget build(BuildContext context) {

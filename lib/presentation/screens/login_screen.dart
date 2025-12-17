@@ -37,10 +37,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: TextField(
                     keyboardType: TextInputType.number,
                     inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.SfProRegular),
+                    style: TextStyle(color: Colors.black, fontSize: 14, fontFamily: Assets.sfProRegular),
                     decoration: InputDecoration(
                       hintText: 'Nhập số điện thoại',
-                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.SfProRegular),
+                      hintStyle: TextStyle(color: Colors.black.withOpacity(0.8), fontFamily: Assets.sfProRegular),
                       enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(40),
                         borderSide: const BorderSide(color: Colors.grey, width: 1),
@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     UnitText(text: "Bạn chưa có tài khoản?"),
                     GestureDetector(
                       onTap: (){
-                        context.push(PathRouter.REGISTER_SCREEN);
+                        context.push(PathRouter.registerScreen);
                       },
                       child: Container(color:Colors.transparent,child: UnitText(text: " Đăng ký ngay", color: AppColors.colorButtonHome, underline: true))),
                   ],

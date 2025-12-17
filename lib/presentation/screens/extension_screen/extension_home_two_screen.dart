@@ -17,7 +17,7 @@ extension ExtensionHomeTwoScreen on HomeScreenState{
         child: ListView.separated(
           scrollDirection: Axis.horizontal,
           itemCount: itemsCategoryYouChoose.length,
-          separatorBuilder: (_, __) => const SizedBox(width: 12),
+          separatorBuilder: (_, _) => const SizedBox(width: 12),
           itemBuilder: (context, index) {
             final item = itemsCategoryYouChoose[index];
 
@@ -44,7 +44,7 @@ extension ExtensionHomeTwoScreen on HomeScreenState{
                       child: Container(
                         padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                         color: Colors.black.withOpacity(0.45),
-                        child: UnitText(text: item["title"],maxLines: 2, fontSize: 14,fontFamily: Assets.SfProSemibold,
+                        child: UnitText(text: item["title"],maxLines: 2, fontSize: 14,fontFamily: Assets.sfProSemibold,
                           color: Colors.white)
                       ),
                     ),

@@ -1,14 +1,13 @@
 class Assets{
-  Assets._();
-  static const String SfProBold = 'SfProBold';
-  static const String SfProMedium = 'SfProMedium';
-  static const String SfProLight = 'SfProLight';
-  static const String SfProRegular = 'SfProRegular';
-  static const String SfProThin = 'SfProThin';
-  static const String SfProSemibold = 'SfProSemibold';
-  static const String SfProBoldItalic = 'SfProBoldItalic';
-  static const String SfProBlackItalic = 'SfProBlackItalic';
-  static const String SfProMediumItalic = 'SfProMediumItalic';
+  static const String sfProBold = 'SfProBold';
+  static const String sfProMedium = 'SfProMedium';
+  static const String sfProLight = 'SfProLight';
+  static const String sfProRegular = 'SfProRegular';
+  static const String sfProThin = 'SfProThin';
+  static const String sfProSemibold = 'SfProSemibold';
+  static const String sfProBoldItalic = 'SfProBoldItalic';
+  static const String sfProBlackItalic = 'SfProBlackItalic';
+  static const String sfProMediumItalic = 'SfProMediumItalic';
   static const String imgQrCode = 'assets/images/imgQrCode.png';
   static const String imgBG = 'assets/images/imgBg.jpg';
   static const String imgFoodItem = 'assets/images/img_food_item.jpg';
@@ -21,6 +20,8 @@ class Assets{
   static const String imgBanner = 'assets/images/banner_app.png';
   static const String imgMegaSale = 'assets/images/mega_sale.png';
   static const String iconScanQR = 'assets/images/qr_code.svg';
+  static const String iconBadge = 'assets/images/icon_badge.svg';
+  static const String iconGift = 'assets/images/icon_gift.svg';
   static const String iconHome = 'assets/images/home.svg';
   static const String iconProfile = 'assets/images/profile.svg';
   static const String iconSearch = 'assets/images/search.svg';
@@ -53,9 +54,16 @@ class Assets{
   static const String imgCarrotJuice = 'assets/images/carrot_juice.png';
   static const String imgSpoghetti = 'assets/images/imgSpoghetti.png';
   static const String imgCoffeeSignBoard = 'assets/images/coffee_sign_board.png';
+  static const String imgNotification3d = 'assets/images/notification_3d.png';
 
   static const String imgViewCoffeeCup = 'assets/images/view_coffee_cup.jpg';
   static const String imgJuiceCategory = 'assets/images/imgJuiceCategory.jpg';
   static const String imgFoodDesserts = 'assets/images/food_desserts.jpg';
   static const String imgSnacksSideDishes = 'assets/images/imgSnacksSideDishes.jpg';
+}
+
+
+class DataAssets {
+  static const String jsonHistoryPoint = 'assets/jsons/history_point.json';
+  static const String jsonNotificationList = 'assets/jsons/notification_list.json';
 }

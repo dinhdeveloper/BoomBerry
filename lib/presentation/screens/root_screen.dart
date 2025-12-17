@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lucide_icons/lucide_icons.dart';
 import 'package:remindbless/core/app_assets.dart';
-import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/presentation/screens/add_remind_screen.dart';
 import 'package:remindbless/presentation/screens/setting_screen.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 
-import 'barcode_scanner_screen.dart';
+import 'history_point_screen.dart';
 import 'home_screen.dart';
 
 class RootScreen extends StatefulWidget {
@@ -25,8 +23,8 @@ class _RootScreenState extends State<RootScreen> {
   Widget build(BuildContext context) {
     final screens = [
       HomeScreen(key: _homeKey),
-      AddRemindScreen(),
-      BarcodeScannerScreen(),
+      ScanQrCodeScreen(),
+      HistoryPointScreen(),
       SettingScreen(),
     ];
 
@@ -79,8 +77,8 @@ class _RootScreenState extends State<RootScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _buildNavIcon(Assets.iconHome, 0, "Trang chủ"),
-            _buildNavIcon(Assets.iconSearch, 1, "Tìm kiếm"),
-            _buildNavIcon(Assets.iconScanQR, 2, "Quét QR"),
+            _buildNavIcon(Assets.iconScanQR, 1, "Quét mã"),
+            _buildNavIcon(Assets.iconBadge, 2, "Tích điểm"),
             _buildNavIcon(Assets.iconProfile, 3, "Tài khoản"),
           ],
         ),
@@ -103,7 +101,7 @@ class _RootScreenState extends State<RootScreen> {
               color: isSelected ? null : Colors.grey,
             ),
             UnitText(text: title, fontSize: 10,
-              fontFamily: Assets.SfProLight,
+              fontFamily: Assets.sfProLight,
               fontWeight: isSelected ? FontWeight.w900 : FontWeight.w600,
               color: isSelected ? Colors.black : Colors.grey,
             )
