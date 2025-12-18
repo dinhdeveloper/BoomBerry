@@ -48,7 +48,7 @@ extension ExHomeChild on HomeScreenState {
               borderRadius: 10,
               decoration: BoxDecoration(color: Colors.white),
               firstChild: firstChildMegaSale(jsonMegaSale['items']?[index]),
-              borderColor: Colors.grey,
+              borderColor: Colors.black12,
               secondChild: secondChildMegaSale(jsonMegaSale['items']?[index]),
             ),
           );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/path_router.dart';
@@ -89,9 +88,8 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 GestureDetector(
                   onTap: _isOtpValid
                       ? () {
-                          /// Về màn hình home
-                          context.go('/');
-                        }
+                          Navigator.pushNamedAndRemoveUntil(context, PathRouter.rootScreen, (route) => false);
+                      }
                       : null,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),

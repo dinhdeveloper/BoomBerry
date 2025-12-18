@@ -19,7 +19,6 @@ dependencies:
   permission_handler: ^12.0.1
   cached_network_image: ^3.4.1
   barcode_widget: ^2.0.4
-  go_router: ^17.0.1
   package_info_plus: ^9.0.0
 
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/path_router.dart';
@@ -87,8 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {
                       _isPhoneInvalid = false;
                     });
-
-                    context.go(PathRouter.verifyOtpScreen);
+                    Navigator.pushNamed(context, PathRouter.verifyOtpScreen);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 50),
@@ -110,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     UnitText(text: "Bạn chưa có tài khoản?"),
                     GestureDetector(
                       onTap: () {
-                        context.push(PathRouter.registerScreen);
+                        Navigator.pushNamed(context, PathRouter.registerScreen);
                       },
                       child: Container(
                         color: Colors.transparent,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/path_router.dart';
@@ -18,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 
 class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
   late TabController tabController;
-  final tabs = ["Dành cho bạn", "Ưu đãi đỉnh"];
+  final tabs = ["Ưu đãi đỉnh","Dành cho bạn"];
 
   @override
   void initState() {
@@ -61,7 +60,7 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
 
                   GestureDetector(
                     onTap: () {
-                      context.push(PathRouter.loginScreen);
+                      Navigator.pushNamed(context, PathRouter.loginScreen);
                     },
                     child: Container(
                       color: Colors.transparent,
@@ -126,9 +125,9 @@ class HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMi
                             elevation: 0,
                             bottom: TabBar(
                               controller: tabController,
-                              labelColor: Colors.blueAccent,
+                              labelColor: AppColors.colorButtonHome,
                               unselectedLabelColor: Colors.black54,
-                              indicatorColor: Colors.blueAccent,
+                              indicatorColor: AppColors.colorButtonHome,
                               tabs: tabs.map((e) => Tab(text: e)).toList(),
                             ),
                           ),

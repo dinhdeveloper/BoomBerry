@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:go_router/go_router.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/data_home.dart';
@@ -30,7 +29,7 @@ extension ExHomeScreen on HomeScreenState{
             const SizedBox(width: 10),
             GestureDetector(
               onTap: (){
-                context.push(PathRouter.notificationListScreen);
+                Navigator.pushNamed(context, PathRouter.notificationListScreen);
               },
               child: Container(
                 color: Colors.transparent,
@@ -177,11 +176,23 @@ extension ExHomeScreen on HomeScreenState{
         crossAxisSpacing: 10,
         childAspectRatio: 0.77,
         children: itemsHomeCategory.map((it) {
-          return IconTile(
-            assetPath: it.assetPath,
-            label: it.label,
-            boxSize: iconBoxSize,
-            imageSize: iconImageSize,
+          return GestureDetector(
+            onTap: (){
+              Navigator.pushNamed(
+                context,
+                PathRouter.categoryListScreen,
+                arguments: {
+                  'categoryId': it.idCategory,
+                },
+              );
+            },
+            child: IconTile(
+              idCategory: it.idCategory,
+              assetPath: it.assetPath,
+              label: it.label,
+              boxSize: iconBoxSize,
+              imageSize: iconImageSize,
+            ),
           );
         }).toList(),
       ),
@@ -190,12 +201,14 @@ extension ExHomeScreen on HomeScreenState{
 }
 
 class IconTile extends StatelessWidget {
+  final String idCategory;
   final String assetPath;
   final String label;
   final double boxSize;
   final double imageSize;
 
   const IconTile({super.key,
+    required this.idCategory,
     required this.assetPath,
     required this.label,
     required this.boxSize,

@@ -84,7 +84,7 @@ extension ExtensionHomeTwoScreen on HomeScreenState{
               borderRadius: 10,
               decoration: BoxDecoration(color: Colors.white),
               firstChild: firstChildPageForYou(jsonMegaSale['items']?[index]),
-              borderColor: Colors.grey,
+              borderColor: Colors.black12,
               secondChild: secondChildPageForYou(jsonMegaSale['items']?[index]),
             ),
           );

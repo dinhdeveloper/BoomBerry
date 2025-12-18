@@ -124,8 +124,8 @@ class CouponCard extends StatelessWidget {
         clipper: clipper,
         borderColor: borderColor ?? Colors.grey,
         strokeWidth: 1.5,
-        dashLength: 2,
-        dashSpace: 1,
+        dashLength: 20, // bao nhiêu không quan trọng :))
+        dashSpace: 0,
       ),
       child: ClipPath(
         clipper: clipper,
