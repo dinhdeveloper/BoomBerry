@@ -69,7 +69,7 @@ extension ExtensionHomeTwoScreen on HomeScreenState{
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
+          crossAxisSpacing: 5,
           childAspectRatio: 110 / 170, // tỷ lệ width/height mỗi item
         ),
         itemCount: jsonMegaSale['items']?.length ?? 0,

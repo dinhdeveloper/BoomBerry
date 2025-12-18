@@ -9,6 +9,7 @@ import 'package:remindbless/presentation/utils/formatters.dart';
 import 'package:remindbless/presentation/widgets/common/bottom_bar_widget.dart';
 import 'package:remindbless/presentation/widgets/common/ticket_common.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CategoryListScreen extends StatefulWidget {
   const CategoryListScreen({super.key});
@@ -62,6 +63,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
 
   // ---------------- LOAD DATA ----------------
   Future<void> _loadProducts() async {
+    await Future.delayed(const Duration(seconds: 2)); // cho shimmer chạy mượt
     _products = await ProductRepository.loadProducts();
     setState(() => _loading = false);
   }
@@ -69,9 +71,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
   // ---------------- FILTER PRODUCT ----------------
   List<ProductItem> get filteredProducts {
     final categoryId = itemsHomeCategory[_selectedIndex].idCategory;
-
     if (categoryId == 'ALL') return _products;
-
     return _products.where((e) => e.categoryId == categoryId).toList();
   }
 
@@ -97,7 +97,7 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
             _buildHeader(currentCategory.label),
             _buildCategoryHorizontal(),
             const SizedBox(height: 10),
-            Expanded(child: _loading ? const Center(child: CircularProgressIndicator()) : _buildProductGrid()),
+            Expanded(child: _loading ? _buildProductShimmer() : _buildProductGrid()),
           ],
         ),
       ),
@@ -183,9 +183,27 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
     );
   }
 
+  // ---------------- SHIMMER GRID ----------------
+  Widget _buildProductShimmer() {
+    return GridView.builder(
+      padding: const EdgeInsets.fromLTRB(15, 15, 15, 10),
+      itemCount: 6,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        childAspectRatio: 120 / 170,
+      ),
+      itemBuilder: (context, index) {
+        return _couponCardShimmer();
+      },
+    );
+  }
+
+  // ---------------- PRODUCT UI ----------------
   Widget _productImage(ProductItem product) {
     return Padding(
-      padding: const EdgeInsets.all(5.0),
+      padding: const EdgeInsets.all(5),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.asset(product.image, height: 140, width: double.infinity, fit: BoxFit.cover),
@@ -220,14 +238,50 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
                 ),
               ],
             ),
-          UnitText(
-            text: "${formatVND(int.parse(product.price))} VNĐ",
-            fontFamily: Assets.sfProMedium,
-            fontWeight: FontWeight.w700,
-            fontSize: 16,
-            maxLines: 1,
-          ),
+          UnitText(text: "${formatVND(int.parse(product.price))} VNĐ", fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700, fontSize: 16),
         ],
+      ),
+    );
+  }
+
+  Widget _couponCardShimmer() {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade50,
+      child: CouponCard(
+        curvePosition: 145,
+        curveRadius: 15,
+        borderRadius: 10,
+        borderColor: Colors.black12,
+        decoration: const BoxDecoration(color: Colors.white),
+
+        // ---------- IMAGE ----------
+        firstChild: Padding(
+          padding: const EdgeInsets.all(5),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Container(height: 140, width: double.infinity, color: Colors.white),
+          ),
+        ),
+
+        // ---------- INFO ----------
+        secondChild: Container(
+          padding: const EdgeInsets.all(8),
+          width: double.maxFinite,
+          decoration: const BoxDecoration(
+            border: DashedBorder(dashLength: 2, top: BorderSide(color: Colors.grey, width: 0.5)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(height: 14, width: double.infinity, color: Colors.white),
+              const SizedBox(height: 6),
+              Container(height: 14, width: 90, color: Colors.white),
+              const Spacer(),
+              Container(height: 16, width: 110, color: Colors.white),
+            ],
+          ),
+        ),
       ),
     );
   }

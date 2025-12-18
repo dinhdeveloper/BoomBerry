@@ -7,6 +7,7 @@ import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:shimmer/shimmer.dart';
 
 class NotificationListScreen extends StatefulWidget {
   const NotificationListScreen({super.key});
@@ -17,18 +18,25 @@ class NotificationListScreen extends StatefulWidget {
 
 class _NotificationListScreenState extends State<NotificationListScreen> {
   List<NotificationDay> notifications = [];
+  bool _loading = true;
 
   @override
   void initState() {
     super.initState();
-    loadNotifications();
+    _loadNotifications();
   }
 
-  Future<void> loadNotifications() async {
+  Future<void> _loadNotifications() async {
+    await Future.delayed(const Duration(seconds: 1)); // ⏱ shimmer 1s
     final jsonString = await rootBundle.loadString(DataAssets.jsonNotificationList);
     final data = json.decode(jsonString);
+
+    if (!mounted) return;
+
     setState(() {
-      notifications = (data['notifications'] as List).map((e) => NotificationDay.fromJson(e)).toList();
+      notifications =
+          (data['notifications'] as List).map((e) => NotificationDay.fromJson(e)).toList();
+      _loading = false;
     });
   }
 
@@ -36,71 +44,177 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: notifications.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : SafeArea(
-              bottom: false,
-              child: CustomScrollView(
-                slivers: [
-                  SliverPersistentHeader(pinned: true, delegate: _HeaderDelegate()),
-                  ...notifications.map((day) {
-                    return SliverList(
-                      delegate: SliverChildBuilderDelegate((context, index) {
-                        if (index == 0) {
-                          // Header ngày
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-                            child: UnitText(text: day.date, fontSize: 13, fontFamily: Assets.sfProThin),
-                          );
-                        }
-                        final item = day.items[index - 1]; // vì index 0 là header
-                        final isLastItem = index == day.items.length;
-                        return Column(
-                          children: [
-                            Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[100],
-                                borderRadius: BorderRadius.circular(8),
-                                border: Border.all(color: Colors.black12, width: 0.5),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Image.asset(Assets.imgCoffeeSignBoard, width: 35, height: 35),
-                                    const SizedBox(width: 5),
-                                    Expanded(
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          UnitText(text: item.title, fontFamily: Assets.sfProMedium, fontSize: 16),
-                                          const SizedBox(height: 5),
-                                          UnitText(text: item.desc, maxLines: 2, fontFamily: Assets.sfProLight),
-                                          const SizedBox(height: 5),
-                                          UnitText(text: item.time, fontSize: 15, color: Colors.black45),
-                                        ],
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            if (isLastItem) const SizedBox(height: 10),
-                          ],
+      body: SafeArea(
+        bottom: false,
+        child: CustomScrollView(
+          slivers: [
+            /// HEADER PINNED
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _HeaderDelegate(),
+            ),
+
+            /// SHIMMER
+            if (_loading)
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                      (context, index) => _buildNotificationItemShimmer(),
+                  childCount: 8,
+                ),
+              )
+
+            /// REAL DATA
+            else
+              ...notifications.map((day) {
+                return SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                      if (index == 0) {
+                        /// HEADER DATE
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
+                          child: UnitText(
+                            text: day.date,
+                            fontSize: 13,
+                            fontFamily: Assets.sfProThin,
+                          ),
                         );
-                      }, childCount: day.items.length + 1), // +1 cho header
-                    );
-                  }),
+                      }
+
+                      final item = day.items[index - 1];
+                      final isLastItem = index == day.items.length;
+
+                      return Column(
+                        children: [
+                          _buildNotificationItem(item),
+                          if (isLastItem) const SizedBox(height: 10),
+                        ],
+                      );
+                    },
+                    childCount: day.items.length + 1,
+                  ),
+                );
+              }),
+          ],
+        ),
+      ),
+      bottomNavigationBar: bottomBarDetail(
+        onTap: () => Navigator.of(context).pop(),
+      ),
+    );
+  }
+
+  // ================= REAL ITEM =================
+  Widget _buildNotificationItem(NotificationItem item) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.black12, width: 0.5),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Image.asset(
+              Assets.imgCoffeeSignBoard,
+              width: 35,
+              height: 35,
+            ),
+            const SizedBox(width: 6),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  UnitText(
+                    text: item.title,
+                    fontFamily: Assets.sfProMedium,
+                    fontSize: 16,
+                  ),
+                  const SizedBox(height: 5),
+                  UnitText(
+                    text: item.desc,
+                    maxLines: 2,
+                    fontFamily: Assets.sfProLight,
+                  ),
+                  const SizedBox(height: 5),
+                  UnitText(
+                    text: item.time,
+                    fontSize: 15,
+                    color: Colors.black45,
+                  ),
                 ],
               ),
             ),
-      bottomNavigationBar: bottomBarDetail(
-        onTap: () {
-          Navigator.of(context).pop();
-        },
+          ],
+        ),
+      ),
+    );
+  }
+
+  // ================= SHIMMER ITEM (MATCH 1–1) =================
+  Widget _buildNotificationItemShimmer() {
+    return Container(
+      height: 100,
+      margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      padding: const EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        color: Colors.grey[100],
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: Colors.black12, width: 0.5),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _shimmerBox(35, 35),
+          const SizedBox(width: 6),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _shimmerLine(width: 160, height: 15), // title
+                const SizedBox(height: 8),
+                _shimmerLine(height: 12),
+                const SizedBox(height: 6),
+                _shimmerLine(width: 200, height: 12), // desc
+                const SizedBox(height: 7),
+                _shimmerLine(width: 90, height: 12), // time
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _shimmerLine({double width = double.infinity, double height = 12}) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
+      child: Container(
+        width: width,
+        height: height,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+        ),
+      ),
+    );
+  }
+
+  Widget _shimmerBox(double w, double h) {
+    return Shimmer.fromColors(
+      baseColor: Colors.grey.shade300,
+      highlightColor: Colors.grey.shade100,
+      child: Container(
+        width: w,
+        height: h,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(6),
+        ),
       ),
     );
   }
@@ -119,10 +233,16 @@ class _HeaderDelegate extends SliverPersistentHeaderDelegate {
       color: Colors.white,
       padding: const EdgeInsets.symmetric(horizontal: 16),
       alignment: Alignment.centerLeft,
-      child: const UnitText(text: "Danh sách thông báo", color: AppColors.colorButtonBold, fontSize: 20, fontFamily: Assets.sfProSemibold),
+      child: const UnitText(
+        text: "Danh sách thông báo",
+        color: AppColors.colorButtonBold,
+        fontSize: 20,
+        fontFamily: Assets.sfProSemibold,
+      ),
     );
   }
 
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) => false;
 }
+
