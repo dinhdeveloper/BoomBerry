@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/app_theme.dart';
+import 'package:remindbless/core/path_router.dart' show PathRouter;
 import 'package:remindbless/data/models/data_home.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
 import 'package:remindbless/presentation/utils/formatters.dart';
@@ -170,14 +171,25 @@ class _CategoryListScreenState extends State<CategoryListScreen> {
       itemBuilder: (context, index) {
         final product = filteredProducts[index];
 
-        return CouponCard(
-          curvePosition: 145,
-          curveRadius: 15,
-          borderRadius: 10,
-          decoration: const BoxDecoration(color: Colors.white),
-          borderColor: Colors.black12,
-          firstChild: _productImage(product),
-          secondChild: _productInfo(product),
+        return GestureDetector(
+          onTap: (){
+            Navigator.pushNamed(
+              context,
+              PathRouter.productDetailScreen,
+              arguments: {
+                'product': product,
+              },
+            );
+          },
+          child: CouponCard(
+            curvePosition: 145,
+            curveRadius: 15,
+            borderRadius: 10,
+            decoration: const BoxDecoration(color: Colors.white),
+            borderColor: Colors.black12,
+            firstChild: _productImage(product),
+            secondChild: _productInfo(product),
+          ),
         );
       },
     );

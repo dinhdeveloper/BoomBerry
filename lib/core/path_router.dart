@@ -7,6 +7,7 @@ class PathRouter {
   static const String verifyOtpScreen = "verifyOtpScreen";
   static const String notificationListScreen = "notificationList";
   static const String categoryListScreen = "categoryListScreen";
+  static const String productDetailScreen = "productDetailScreen";
 }
 
 
