@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/app_theme.dart';
-import 'package:remindbless/data/models/data_home.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
 import 'package:remindbless/presentation/utils/formatters.dart';
 import 'package:remindbless/presentation/widgets/common/app_image.dart';
@@ -213,7 +212,7 @@ extension WidgetDetail on _ProductDetailScreenState {
       height: 235,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: listProduct.length ?? 0,
+        itemCount: listProduct.length,
         itemBuilder: (context, index) {
           return Padding(
             padding: EdgeInsets.only(top: 10, bottom: 10, right: 10, left: (index == 0) ? 20 : 0),

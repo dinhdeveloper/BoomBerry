@@ -18,7 +18,7 @@ class AppImage extends StatelessWidget {
     required this.height,
     this.fit = BoxFit.cover,
     this.borderRadius,
-    this.errorAsset = Assets.iconCoffeeCup,
+    this.errorAsset = Assets.iconEmptyData,
   });
 
   bool get _isNetwork =>
@@ -36,7 +36,7 @@ class AppImage extends StatelessWidget {
       fit: fit,
 
       /// 🔥 Placeholder dùng NeonLoading
-      placeholder: (_, __) => SizedBox(
+      placeholder: (_, _) => SizedBox(
         width: width,
         height: height,
         child: Center(
@@ -45,7 +45,7 @@ class AppImage extends StatelessWidget {
       ),
 
       /// ❌ Error → fallback ảnh local
-      errorWidget: (_, __, ___) =>
+      errorWidget: (_, _, _) =>
           Image.asset(errorAsset, width: width, height: height, fit: fit),
     )
         : Image.asset(

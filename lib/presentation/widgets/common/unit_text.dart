@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:remindbless/core/app_assets.dart';
 
 class UnitText extends StatelessWidget {
-  final String text;
+  final String? text;
   final double fontSize;
   final double? height;
   final int? maxLines;
@@ -41,7 +41,7 @@ class UnitText extends StatelessWidget {
       decoration = TextDecoration.underline;
     }
     return Text(
-      text,
+      text ?? "Boom Berry",
       textAlign: textAlign ?? TextAlign.start,
       maxLines: maxLines,
       overflow: overflow,
