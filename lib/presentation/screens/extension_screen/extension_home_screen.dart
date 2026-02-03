@@ -242,7 +242,7 @@ extension ExHomeScreen on HomeScreenState{
         physics: const NeverScrollableScrollPhysics(),
         mainAxisSpacing: 10,
         crossAxisSpacing: 10,
-        childAspectRatio: 0.77,
+        //childAspectRatio: 0.9,
         children: categories.map((it) {
           return GestureDetector(
             onTap: () {
@@ -292,7 +292,7 @@ class IconCategory extends StatelessWidget {
         CommonGlass(
           width: boxSize,
           height: boxSize,
-          colorBlur: Colors.white54,
+          colorBlur: Colors.white60,
           // padding: EdgeInsets.zero,
           // decoration: BoxDecoration(
           //   color: Colors.white,
@@ -305,23 +305,26 @@ class IconCategory extends StatelessWidget {
           //     )
           //   ],
           // ),
-          child: AppImage(
-            imageUrl: assetPath,
-            width: imageSize,
-            height: imageSize,
-            fit: BoxFit.contain,
+          child: Center(
+            child: AppImage(
+              imageUrl: assetPath,
+              width: imageSize,
+              height: imageSize,
+              fit: BoxFit.contain,
+            ),
           ),
         ),
-        const SizedBox(height: 8),
-        // Label (2 dòng nếu cần)
-        UnitText(
-          text: label,
-          textAlign: TextAlign.center,
-          height: 1.18,
-          maxLines: 2,
-          fontSize: 13,
-          overflow: TextOverflow.ellipsis,
-        ),
+        // const SizedBox(height: 8),
+        // // Label (2 dòng nếu cần)
+        // UnitText(
+        //   text: label,
+        //   color: Colors.white,
+        //   textAlign: TextAlign.center,
+        //   height: 1.18,
+        //   maxLines: 2,
+        //   fontSize: 13,
+        //   overflow: TextOverflow.ellipsis,
+        // ),
       ],
     );
   }

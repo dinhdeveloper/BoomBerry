@@ -7,16 +7,16 @@ Widget bottomBarDetail({VoidCallback? onTap}) {
   return InkWell(
     onTap: onTap,
     child: CommonGlass(
-      height: 70,
-      radius: 0,
-      colorBlur: Colors.white24,
+      height: 60,
+      radius: 60,
+      colorBlur: Colors.white60,
       // decoration: const BoxDecoration(
       //   color: Colors.transparent,
       //   borderRadius: BorderRadius.only(topLeft: Radius.circular(15), topRight: Radius.circular(15)),
       //   boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 12, offset: Offset(0, -1))],
       // ),
       child: Padding(
-        padding: const EdgeInsets.only(bottom: 30,left: 15, right: 15),
+        padding: const EdgeInsets.only(bottom: 20,left: 15, right: 15,top: 5),
         child: Center(
           child: SvgPicture.asset(Assets.iconBackAppbar, width: 35, height: 35),
         ),

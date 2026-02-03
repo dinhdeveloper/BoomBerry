@@ -123,7 +123,7 @@ class SearchScreen extends StatelessWidget {
                 width: 30,
                 height: 30,
                 radius: 15,
-                child: Icon(Icons.tune, color: AppColors.colorText.withOpacity(0.7), size: 18),
+                child: Center(child: Icon(Icons.tune, color: AppColors.colorText.withOpacity(0.7), size: 18)),
               ),
             ),
           ],

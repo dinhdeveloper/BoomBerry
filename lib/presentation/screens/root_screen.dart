@@ -65,7 +65,7 @@ class _RootScreenState extends State<RootScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: CommonGlass(
         height: 60,
-        colorBlur: Colors.white24,
+        colorBlur: Colors.white70,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

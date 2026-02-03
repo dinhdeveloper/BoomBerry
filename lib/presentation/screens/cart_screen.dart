@@ -70,7 +70,7 @@ class _CartScreenState  extends BaseScreenState<CartViewModel, CartScreen>  {
         ),
 
         /// ===== BOTTOM CHECKOUT =====
-        bottomNavigationBar: _bottomCheckout(),
+        bottomNavigationBar: provider.items.isNotEmpty ? _bottomCheckout() : SizedBox.shrink(),
       ),
     );
   }

@@ -42,7 +42,7 @@ extension ExHomeChild on HomeScreenState {
         itemCount: listProduct?.length ?? 0,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.only(top: 10, bottom: 10, right: 10, left: index == 0 ? 20 : 0),
+            padding: EdgeInsets.only(top: 10, bottom: 10, right: 10, left: index == 0 ? 15 : 0),
             child: GestureDetector(
               onTap: (){
                 Navigator.pushNamed(

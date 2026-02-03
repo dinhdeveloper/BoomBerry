@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:remindbless/core/app_assets.dart';
-import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/base_screen.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/products/product_item.dart';

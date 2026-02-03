@@ -38,8 +38,8 @@ extension ExGridViewProduct on HomeScreenState {
       physics: const NeverScrollableScrollPhysics(),
       padding: const EdgeInsets.symmetric(horizontal: 15),
       gridDelegate: const SliverSimpleGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-      mainAxisSpacing: 12,
-      crossAxisSpacing: 12,
+      mainAxisSpacing: 10,
+      crossAxisSpacing: 15,
       itemCount: listProduct?.length ?? 0,
       itemBuilder: (context, index) {
         final product = listProduct?[index];
@@ -72,8 +72,10 @@ extension ExGridViewProduct on HomeScreenState {
         child: Stack(
           children: [
             /// IMAGE
-            AppImage(imageUrl: product?.imagesProduct.firstOrNull?.imageUrl
-                ?? Assets.imgViewCoffeeCup, height: 140, width: double.infinity),
+            Center(
+              child: AppImage(imageUrl: product?.imagesProduct.firstOrNull?.imageUrl
+                  ?? Assets.imgViewCoffeeCup, height: 140, width: double.infinity),
+            ),
 
             /// SALE BADGE
             if (salePercent > 0) Positioned(top: 5, right: 5, child: _saleBadge(salePercent)),

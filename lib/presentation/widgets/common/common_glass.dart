@@ -19,7 +19,7 @@ class CommonGlass extends StatelessWidget {
     this.height,
     this.radius = 10,
     this.blur = 20,
-    this.colorBlur = Colors.transparent,
+    this.colorBlur = Colors.white54,
     this.borderWidth = 1.5,
     this.maskFilter = 1,
     this.paddingChild = 0.0,
@@ -31,21 +31,22 @@ class CommonGlass extends StatelessWidget {
     final glass = ClipRRect(
       borderRadius: BorderRadius.circular(radius),
       child: Stack(
-        fit: StackFit.passthrough,
         children: [
-          // Blur
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white60,
-              borderRadius: BorderRadius.circular(radius),
-              border: Border.all(
-                color: Colors.white.withOpacity(0.25),
-                width: borderWidth,
+          /// NỀN GLASS → PHẢI FILL
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                color: colorBlur,
+                borderRadius: BorderRadius.circular(radius),
+                border: Border.all(
+                  color: Colors.white.withOpacity(0.15),
+                  width: borderWidth,
+                ),
               ),
             ),
           ),
 
-          // Border
+          /// Border
           Positioned.fill(
             child: CustomPaint(
               painter: CornerBorderPainter(
@@ -56,13 +57,13 @@ class CommonGlass extends StatelessWidget {
             ),
           ),
 
-          // Content
+          /// Content
           Padding(
             padding: EdgeInsets.all(paddingChild),
             child: child,
           ),
         ],
-      ),
+      )
     );
 
     // ⭐ QUAN TRỌNG
