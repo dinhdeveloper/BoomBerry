@@ -3,6 +3,7 @@ import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/data_home.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 import 'package:remindbless/presentation/screens/home_screen.dart';
 import 'package:remindbless/presentation/widgets/common/ticket_common.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
@@ -61,7 +62,7 @@ extension ExtensionHomeTwoScreen on HomeScreenState{
     );
   }
 
-  Widget viewPageForYou(List<ProductItem>? listProduct){
+  Widget viewPageForYou(List<Product>? listProduct){
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 15,horizontal: 15),
       child: GridView.builder(

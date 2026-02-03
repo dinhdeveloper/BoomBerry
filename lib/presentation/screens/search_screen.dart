@@ -175,8 +175,10 @@ class SearchScreen extends StatelessWidget {
                   width: 45,
                   height: 28,
                   colorBlur: Colors.white12,
-                  child: UnitText(text: '${search['count']}+',
-                      color: Colors.black.withOpacity(0.9), fontSize: 12, fontFamily: Assets.sfProRegular
+                  child: Center(
+                    child: UnitText(text: '${search['count']}+',
+                        color: Colors.black.withOpacity(0.9), fontSize: 12, fontFamily: Assets.sfProRegular
+                    ),
                   ),
                 ),
               ],
@@ -216,8 +218,10 @@ class SearchScreen extends StatelessWidget {
                 CommonGlass(
                   blur: 5, width: 40, height: 25, radius: 20,
                   colorBlur: Colors.white12,
-                  child: UnitText(text: category['books'],
-                      color: Colors.black, fontSize: 10, fontFamily: Assets.sfProRegular
+                  child: Center(
+                    child: UnitText(text: category['books'],
+                        color: Colors.black, fontSize: 10, fontFamily: Assets.sfProRegular
+                    ),
                   ),
                 ),
               ],

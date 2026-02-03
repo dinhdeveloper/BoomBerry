@@ -226,7 +226,8 @@ class _CategoryListScreenState extends BaseScreenState<CategoryViewModel, Catego
       padding: const EdgeInsets.all(5),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
-        child: AppImage(imageUrl: product.imagesProduct.first.imageUrl, height: 140, width: double.infinity),
+        child: AppImage(imageUrl: product.imagesProduct.firstOrNull?.imageUrl
+            ?? Assets.imgViewCoffeeCup, height: 140, width: double.infinity),
       ),
     );
   }
@@ -261,7 +262,7 @@ class _CategoryListScreenState extends BaseScreenState<CategoryViewModel, Catego
             )
           else
             const SizedBox(height: 5),
-          UnitText(text: "${formatVND(product.productPriceSale)} VNĐ", fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700, fontSize: 16),
+          UnitText(text: formatVND(product.productPriceSale), fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700, fontSize: 15),
         ],
       ),
     );

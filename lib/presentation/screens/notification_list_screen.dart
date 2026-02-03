@@ -121,7 +121,8 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: CommonGlass(
-        height: 90,
+        height: 100,
+        blur: 40,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Row(
@@ -140,7 +141,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
                     UnitText(
                       text: item.title,
                       fontFamily: Assets.sfProMedium,
-                      fontSize: 16,
+                      fontSize: 15,
                     ),
                     const SizedBox(height: 5),
                     UnitText(
@@ -151,7 +152,7 @@ class _NotificationListScreenState extends State<NotificationListScreen> {
                     const SizedBox(height: 5),
                     UnitText(
                       text: item.time,
-                      fontSize: 15,
+                      fontSize: 13,
                       color: Colors.black45,
                     ),
                   ],

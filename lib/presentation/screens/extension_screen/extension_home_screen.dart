@@ -255,7 +255,7 @@ extension ExHomeScreen on HomeScreenState{
                 },
               );
             },
-            child: IconTile(
+            child: IconCategory(
               idCategory: "${it.categoryId}",
               assetPath: it.categoryImage, // API trả ra URL đầy đủ
               label: it.categoryName,
@@ -269,14 +269,14 @@ extension ExHomeScreen on HomeScreenState{
   }
 }
 
-class IconTile extends StatelessWidget {
+class IconCategory extends StatelessWidget {
   final String idCategory;
   final String assetPath;
   final String label;
   final double boxSize;
   final double imageSize;
 
-  const IconTile({super.key,
+  const IconCategory({super.key,
     required this.idCategory,
     required this.assetPath,
     required this.label,
@@ -292,6 +292,7 @@ class IconTile extends StatelessWidget {
         CommonGlass(
           width: boxSize,
           height: boxSize,
+          colorBlur: Colors.white54,
           // padding: EdgeInsets.zero,
           // decoration: BoxDecoration(
           //   color: Colors.white,

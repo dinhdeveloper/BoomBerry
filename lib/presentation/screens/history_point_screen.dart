@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:remindbless/core/app_assets.dart';
-import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/data/models/history_point/history_point.dart';
 import 'package:remindbless/presentation/widgets/common/common_glass.dart';
 import 'package:remindbless/presentation/widgets/common/header_delegate.dart';
@@ -110,7 +109,8 @@ class _HistoryPointScreenState extends State<HistoryPointScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
       child: CommonGlass(
-        height: 115,
+        blur: 40,
+        //height: 115,
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: Row(
@@ -141,7 +141,7 @@ class _HistoryPointScreenState extends State<HistoryPointScreen> {
                     const SizedBox(height: 5),
                     UnitText(
                       text: item.time,
-                      fontSize: 15,
+                      fontSize: 13,
                       color: Colors.black45,
                     ),
                   ],

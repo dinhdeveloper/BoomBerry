@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class BackgroundController extends ChangeNotifier {
   static const _keyBg = "app_background";
 
-  ImageProvider _background = const AssetImage(Assets.imgBgAdmin);
-  String _selectedAsset = Assets.imgBgAdmin;
+  ImageProvider _background = const AssetImage(Assets.imgBgAdmin0);
+  String _selectedAsset = Assets.imgBgAdmin0;
 
   ImageProvider get background => _background;
   String get selectedAsset => _selectedAsset;

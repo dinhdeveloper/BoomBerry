@@ -7,7 +7,8 @@ Widget bottomBarDetail({VoidCallback? onTap}) {
   return InkWell(
     onTap: onTap,
     child: CommonGlass(
-      height: 75,
+      height: 70,
+      radius: 0,
       colorBlur: Colors.white24,
       // decoration: const BoxDecoration(
       //   color: Colors.transparent,

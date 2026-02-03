@@ -66,10 +66,15 @@ class _MainAppState extends State<MainApp> {
 }
 
 const List<String> backgroundAssets = [
+  Assets.imgBgAdmin0,
   Assets.imgBgAdmin,
   Assets.imgBgAdmin2,
   Assets.imgBgAdmin3,
   Assets.imgBgAdmin4,
+  Assets.imgBgAdmin5,
+  Assets.imgBgAdmin6,
+  Assets.imgBgAdmin7,
+  Assets.imgBgAdmin8,
 ];
 
 

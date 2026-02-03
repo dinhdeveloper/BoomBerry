@@ -22,7 +22,7 @@ class HeaderDelegate extends SliverPersistentHeaderDelegate {
       alignment: Alignment.centerLeft,
       child: UnitText(
         text: title,
-        color: AppColors.colorButtonBold,
+        color: Colors.orange,
         fontSize: 18,
         fontFamily: Assets.sfProSemibold,
       ),

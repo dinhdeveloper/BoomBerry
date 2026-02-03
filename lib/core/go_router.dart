@@ -22,7 +22,6 @@ class Routers {
       case PathRouter.adminProducts:
         return MaterialPageRoutePlus(builder: (_) => const AdminProductsScreen());
 
-
       case PathRouter.rootScreen:
         return MaterialPageRoutePlus(builder: (_) => const RootScreen());
       case PathRouter.loginScreen:

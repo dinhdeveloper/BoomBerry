@@ -4,6 +4,7 @@ import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 import 'package:remindbless/presentation/screens/home_screen.dart';
 import 'package:remindbless/presentation/utils/formatters.dart';
 import 'package:remindbless/presentation/widgets/common/app_image.dart';
@@ -31,7 +32,7 @@ extension ExGridViewProduct on HomeScreenState {
     );
   }
 
-  Widget viewOtherGrid(List<ProductItem>? listProduct) {
+  Widget viewOtherGrid(List<Product>? listProduct) {
     return MasonryGridView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -61,8 +62,8 @@ extension ExGridViewProduct on HomeScreenState {
     );
   }
 
-  Widget _productImage(ProductItem? product) {
-    final salePercent = product?.salePercent ?? 0;
+  Widget _productImage(Product? product) {
+    final salePercent = product?.productSalePercent ?? 0;
 
     return Padding(
       padding: const EdgeInsets.all(5),
@@ -71,7 +72,8 @@ extension ExGridViewProduct on HomeScreenState {
         child: Stack(
           children: [
             /// IMAGE
-            AppImage(imageUrl: product?.image, height: 140, width: double.infinity),
+            AppImage(imageUrl: product?.imagesProduct.firstOrNull?.imageUrl
+                ?? Assets.imgViewCoffeeCup, height: 140, width: double.infinity),
 
             /// SALE BADGE
             if (salePercent > 0) Positioned(top: 5, right: 5, child: _saleBadge(salePercent)),
@@ -91,7 +93,7 @@ extension ExGridViewProduct on HomeScreenState {
     );
   }
 
-  Widget _productInfo(ProductItem? product) {
+  Widget _productInfo(Product? product) {
     return Container(
       padding: const EdgeInsets.all(5),
       width: double.maxFinite,
@@ -102,9 +104,9 @@ extension ExGridViewProduct on HomeScreenState {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          UnitText(text: product?.name, fontFamily: Assets.sfProLight, fontWeight: FontWeight.w500, fontSize: 14, maxLines: 2),
+          UnitText(text: product?.productName, fontFamily: Assets.sfProLight, fontWeight: FontWeight.w500, fontSize: 14, maxLines: 2),
           UnitText(
-            text: product?.priceSale.isNotEmpty == true ? "${formatVND(int.parse("${product?.priceSale}"))} VNĐ" : "",
+            text: formatVND(product?.productPriceSale ?? 0),
             fontFamily: Assets.sfProMedium,
             fontWeight: FontWeight.w700,
             fontSize: 14,

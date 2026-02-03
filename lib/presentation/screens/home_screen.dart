@@ -4,6 +4,8 @@ import 'package:remindbless/core/app_theme.dart';
 import 'package:remindbless/core/base_screen.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
+import 'package:remindbless/presentation/widgets/common/app_loading.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 import 'package:remindbless/viewmodel/home_viewmodel.dart';
 import 'extension_screen/extension_home_child_screen.dart';
@@ -22,13 +24,13 @@ class HomeScreenState extends BaseScreenState<HomeViewModel, HomeScreen> with Si
   void initFunction() {
     provider.fetchCategories();
   }
-  List<ProductItem> listProduct = [];
+  List<Product> listProduct = [];
   List<StoryItem> listStory = [];
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    //_initLoad();
+    _initLoad();
   }
 
   Future<void> _initLoad() async {
@@ -36,6 +38,9 @@ class HomeScreenState extends BaseScreenState<HomeViewModel, HomeScreen> with Si
   }
 
   Future<void> _loadProducts() async {
+    AppLoading.show();
+    await provider.fetchCategories();
+    AppLoading.dismiss();
     listProduct = await ProductRepository.loadProducts();
     listStory = await ProductRepository.loadStory();
     if (!mounted) return;

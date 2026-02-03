@@ -2,45 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:remindbless/core/app_assets.dart';
-
-class ProductItem {
-  final String id;
-  final String name;
-  final String image;
-  final String price;
-  final String priceSale;
-  final int salePercent;
-  final int soldCount;
-  final String location; //dùng để show tag "tại cửa hàng" hay "online"
-  final String categoryId;
-
-  ProductItem({
-    required this.id,
-    required this.name,
-    required this.image,
-    required this.categoryId,
-    required this.salePercent,
-    required this.soldCount,
-    required this.price,
-    required this.priceSale,
-    required this.location,
-  });
-
-  factory ProductItem.fromJson(Map<String, dynamic> json) {
-    return ProductItem(
-      id: json['id'],
-      name: json['name'],
-      image: json['image'],
-      categoryId: json['categoryId'],
-      salePercent: json['salePercent'],
-      soldCount: json['soldCount'],
-      price: json['price'],
-      priceSale: json['priceSale'],
-      location: json['location'],
-    );
-  }
-
-}
+import 'package:remindbless/data/models/banks/bank_model.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 
 class StoryItem {
   final String name;
@@ -61,13 +24,21 @@ class StoryItem {
 }
 
 class ProductRepository {
-  static Future<List<ProductItem>> loadProducts() async {
+  static Future<List<Product>> loadProducts() async {
     final jsonString =
     await rootBundle.loadString(DataAssets.jsonProducts);
 
     final List data = json.decode(jsonString);
-    return data.map((e) => ProductItem.fromJson(e)).toList();
+    return data.map((e) => Product.fromJson(e)).toList();
   }
+  static Future<List<Bank>> loadBanks() async {
+    final jsonString =
+    await rootBundle.loadString(DataAssets.jsonBanks);
+
+    final List data = json.decode(jsonString);
+    return data.map((e) => Bank.fromJson(e)).toList();
+  }
+
 
   static Future<List<StoryItem>> loadStory() async {
     final jsonString =

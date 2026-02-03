@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
 
 class WidgetProductCardHome extends StatelessWidget {
-  final ProductItem item;
+  final Product item;
 
   const WidgetProductCardHome({super.key, required this.item});
 
@@ -18,7 +19,7 @@ class WidgetProductCardHome extends StatelessWidget {
             /// Background image
             Positioned.fill(
               child: Image.asset(
-                item.image,
+                item.imagesProduct.first.imageUrl,
                 fit: BoxFit.cover,
               ),
             ),
@@ -46,12 +47,12 @@ class WidgetProductCardHome extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  UnitText(text: item.name,
+                  UnitText(text: item.productName,
                     color: Colors.white,
                     fontSize: 22, fontWeight: FontWeight.w600,
                   ),
                   const SizedBox(height: 4),
-                  UnitText(text: item.price,
+                  UnitText(text: "${item.productPrice}",
                     color: Colors.white.withOpacity(0.85),
                     fontSize: 14,
                   ),

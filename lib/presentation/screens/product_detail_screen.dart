@@ -27,7 +27,7 @@ class ProductDetailScreen extends BaseScreen<ProductViewModel> {
 
 class _ProductDetailScreenState extends BaseScreenState<ProductViewModel, ProductDetailScreen> {
   Product? product;
-  List<ProductItem> listProduct = [];
+  List<Product> listProduct = [];
 
   int quantity = 1;
   double unitPrice = 0; // priceSale của 1 SP
@@ -183,11 +183,11 @@ class _ProductDetailScreenState extends BaseScreenState<ProductViewModel, Produc
                     height: 40,
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(25), topRight: Radius.circular(25)),
+                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20)),
                     ),
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
                     child: UnitText(
-                      text: "${formatVND(product?.productPriceSale ?? 0)} VNĐ",
+                      text: formatVND(product?.productPriceSale ?? 0),
                       fontSize: 20,
                       fontFamily: Assets.sfProBold,
                       color: Colors.orange,
@@ -209,8 +209,8 @@ class _ProductDetailScreenState extends BaseScreenState<ProductViewModel, Produc
                         width: double.infinity,
                         curveRadius: 20,
                         borderRadius: 10,
-                        borderColor: Colors.white,
-                        decoration: const BoxDecoration(color: Colors.white),
+                        borderColor: Colors.white54,
+                        decoration: const BoxDecoration(color: Colors.white38),
                         firstChild: productTitle(),
                         secondChild: productPrice(),
                       ),
@@ -311,7 +311,7 @@ extension WidgetDetail on _ProductDetailScreenState {
 
   BoxDecoration _cardDecoration() {
     return BoxDecoration(
-      color: Colors.white,
+      color: Colors.white54,
       borderRadius: BorderRadius.circular(16),
       border: Border.all(color: Colors.grey.withOpacity(0.15)),
       boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 16, offset: const Offset(0, 6))],
@@ -325,17 +325,18 @@ extension WidgetDetail on _ProductDetailScreenState {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            width: 100,
-            height: 60,
-            color: Colors.transparent,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                UnitText(text: "Tổng tiền", fontFamily: Assets.sfProLight, color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15),
-                UnitText(text: formatVND(totalPrice), fontSize: 20, fontFamily: Assets.sfProBold, color: Colors.orange),
-              ],
+          Flexible(
+            child: Container(
+              height: 60,
+              color: Colors.transparent,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  UnitText(text: "Tổng tiền", fontFamily: Assets.sfProLight, color: Colors.black, fontWeight: FontWeight.w400, fontSize: 15),
+                  UnitText(text: formatVND(totalPrice), fontSize: 18, fontFamily: Assets.sfProBold, color: Colors.orange),
+                ],
+              ),
             ),
           ),
           GestureDetector(
@@ -377,7 +378,7 @@ extension WidgetDetail on _ProductDetailScreenState {
             padding: EdgeInsets.only(top: 10, bottom: 10, right: 10, left: (index == 0) ? 20 : 0),
             child: CouponCard(
               height: double.infinity,
-              width: 125,
+              width: 130,
               curvePosition: 110,
               curveRadius: 15,
               borderRadius: 10,
@@ -392,7 +393,7 @@ extension WidgetDetail on _ProductDetailScreenState {
     );
   }
 
-  Widget secondChildMegaSale(ProductItem? itemSale) {
+  Widget secondChildMegaSale(Product? itemSale) {
     return Container(
       padding: const EdgeInsets.all(8),
       width: double.maxFinite,
@@ -403,19 +404,20 @@ extension WidgetDetail on _ProductDetailScreenState {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           UnitText(
-            text: itemSale?.name.toString() ?? "Đồ ăn healthy buổi trưa",
+            text: itemSale?.productName.toString() ?? "productName",
             fontFamily: Assets.sfProMedium,
             fontWeight: FontWeight.w500,
             fontSize: 14,
             maxLines: 1,
           ),
-          if (itemSale?.salePercent != 0)
+          if (itemSale?.productSalePercent != 0)
             Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                UnitText(text: "-${itemSale?.salePercent}%", fontFamily: Assets.sfProMedium, fontSize: 12, color: Colors.green[500]),
+                UnitText(text: "-${itemSale?.productSalePercent}%", fontFamily: Assets.sfProMedium, fontSize: 12, color: Colors.green[500]),
                 const SizedBox(width: 5),
                 UnitText(
-                  text: "${formatVND(product?.productPriceSale ?? 0)} VNĐ",
+                  text: formatVND(product?.productPriceSale ?? 0),
                   fontFamily: Assets.sfProMedium,
                   fontSize: 12,
                   lineThrough: true,
@@ -425,7 +427,7 @@ extension WidgetDetail on _ProductDetailScreenState {
               ],
             ),
           UnitText(
-            text: "${formatVND(product?.productPrice ?? 0)} VNĐ",
+            text: formatVND(product?.productPrice ?? 0),
             fontFamily: Assets.sfProMedium,
             fontWeight: FontWeight.w700,
             fontSize: 14,
@@ -436,7 +438,7 @@ extension WidgetDetail on _ProductDetailScreenState {
     );
   }
 
-  Widget firstChildMegaSale(ProductItem? itemSale) {
+  Widget firstChildMegaSale(Product? itemSale) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: Column(
@@ -444,7 +446,8 @@ extension WidgetDetail on _ProductDetailScreenState {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: AppImage(imageUrl: itemSale?.image.toString() ?? Assets.iconCoffeeCup, height: 90, width: 120),
+            child: AppImage(imageUrl: product?.imagesProduct.firstOrNull?.imageUrl
+                ?? Assets.imgViewCoffeeCup, height: 90, width: 120),
           ),
 
           Padding(
@@ -472,7 +475,7 @@ extension WidgetDetail on _ProductDetailScreenState {
           UnitText(text: product?.productName, fontSize: 20, fontFamily: Assets.sfProSemibold, maxLines: 2),
           const SizedBox(height: 3),
           UnitText(
-            text: (salePercent > 0) ? "${formatVND(product?.productPrice ?? 0)} VNĐ" : "",
+            text: (salePercent > 0) ? formatVND(product?.productPrice ?? 0) : "0",
             fontFamily: Assets.sfProMedium,
             fontSize: 16,
             lineThrough: true,
@@ -492,7 +495,7 @@ extension WidgetDetail on _ProductDetailScreenState {
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: UnitText(text: "Nhận nhiều ưu đãi hơn khi thanh toán online.", color: Colors.grey, fontSize: 15, maxLines: 2),
+        child: UnitText(text: "Nhận nhiều ưu đãi hơn khi thanh toán online.", color: Colors.black87, fontSize: 15, maxLines: 2),
       ),
     );
   }

@@ -96,7 +96,7 @@ class _SettingScreenState extends State<SettingScreen> {
 
             CommonGlass(
               width: MediaQuery.of(context).size.width,
-              height: _showBackgroundPicker ? 520 : 365,
+              height: _showBackgroundPicker ? 535 : 380,
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
@@ -243,9 +243,9 @@ class _SettingScreenState extends State<SettingScreen> {
                                                     onTap: () async {
                                                       await bgCtrl.applyAsset(asset);
                                                       _showBackgroundPicker = false;
-                                                      ScaffoldMessenger.of(
-                                                        context,
-                                                      ).showSnackBar(const SnackBar(content: Text("Đã áp dụng hình nền")));
+                                                      // ScaffoldMessenger.of(
+                                                      //   context,
+                                                      // ).showSnackBar(const SnackBar(content: Text("Đã áp dụng hình nền")));
                                                     },
                                                     child: Container(
                                                       height: 32,
@@ -287,6 +287,7 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
               ),
             ),
+            const SizedBox(height: 90),
             Center(
               child: UnitText(text: "Phiên bản: $version", color: Colors.black45),
             ),

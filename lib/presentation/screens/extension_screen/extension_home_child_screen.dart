@@ -3,6 +3,7 @@ import 'package:mobkit_dashed_border/mobkit_dashed_border.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/core/path_router.dart';
 import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 import 'package:remindbless/presentation/screens/home_screen.dart';
 import 'package:remindbless/presentation/utils/formatters.dart';
 import 'package:remindbless/presentation/widgets/common/app_image.dart';
@@ -19,13 +20,13 @@ extension ExHomeChild on HomeScreenState {
         width: MediaQuery.of(context).size.width,
         tearDepth: 10,
         tearFrequency: 6,
-        gradientColors: [Color(0xFFFFC05E), Colors.transparent],
+        gradientColors: [Color(0xFF74F100), Colors.white24],
         roundedBottom: true,
         cornerRadius: 0,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            UnitText(text: "Giảm giá hôm nay\nKhao Lớn", fontSize: 18, fontFamily: Assets.sfProBlackItalic),
+            UnitText(text: "Giảm giá hôm nay\nKhao Lớn", color: Colors.white, fontSize: 18, fontFamily: Assets.sfProBlackItalic),
             Image.asset(Assets.imgMegaSale),
           ],
         ),
@@ -33,7 +34,7 @@ extension ExHomeChild on HomeScreenState {
     );
   }
 
-  Widget viewScrollHorizontalItemSaleWidget(List<ProductItem>? listProduct) {
+  Widget viewScrollHorizontalItemSaleWidget(List<Product>? listProduct) {
     return SizedBox(
       height: 226,
       child: ListView.builder(
@@ -70,7 +71,7 @@ extension ExHomeChild on HomeScreenState {
     );
   }
 
-  Widget firstChildMegaSale(ProductItem? product) {
+  Widget firstChildMegaSale(Product? product) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: Column(
@@ -79,20 +80,21 @@ extension ExHomeChild on HomeScreenState {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: AppImage(
-              imageUrl: product?.image ?? '', height: 100, width: 130,
+              imageUrl: product?.imagesProduct.firstOrNull?.imageUrl
+                  ?? Assets.imgViewCoffeeCup, height: 100, width: 130,
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(top: 5, left: 2, right: 2),
-            child: BestSellerProgressBar(progress:  getSoldRatio(product?.soldCount), soldCount: product?.soldCount ?? 0, fillColor: Colors.lightGreenAccent, iconColor: Colors.red),
+            child: BestSellerProgressBar(progress:  getSoldRatio(product?.productSoldCount), soldCount: product?.productSoldCount ?? 0, fillColor: Colors.lightGreenAccent, iconColor: Colors.red),
           ),
         ],
       ),
     );
   }
 
-  Widget secondChildMegaSale(ProductItem? product) {
-    final salePercent = product?.salePercent ?? 0;
+  Widget secondChildMegaSale(Product? product) {
+    final salePercent = product?.productSalePercent ?? 0;
     return Container(
       padding: const EdgeInsets.all(5),
       width: double.infinity,
@@ -104,7 +106,7 @@ extension ExHomeChild on HomeScreenState {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           UnitText(
-            text: "${product?.name}",
+            text: "${product?.productName}",
             fontWeight: FontWeight.w200,
             fontSize: 15,
             maxLines: 1,
@@ -116,7 +118,7 @@ extension ExHomeChild on HomeScreenState {
                 UnitText(text: "-$salePercent%", fontFamily: Assets.sfProMedium, fontSize: 12, color: Colors.green[500]),
                 const SizedBox(width: 5),
                 UnitText(
-                  text: product?.priceSale.isNotEmpty == true  ? "${formatVND(int.parse("${product?.priceSale}"))} VNĐ" : "",
+                  text: formatVND(product?.productPriceSale ?? 0),
                   fontFamily: Assets.sfProMedium,
                   fontSize: 12,
                   lineThrough: true,
@@ -128,7 +130,7 @@ extension ExHomeChild on HomeScreenState {
           else
             const SizedBox(height: 7),
           UnitText(
-            text: product?.price.isNotEmpty == true ? "${formatVND(int.parse("${product?.price}"))} VNĐ" : "",
+            text: formatVND(product?.productPrice ?? 0),
             fontFamily: Assets.sfProMedium,
             fontWeight: FontWeight.w700,
             fontSize: 14,
@@ -139,7 +141,7 @@ extension ExHomeChild on HomeScreenState {
     );
   }
 
-  Widget firstChildPageForYou(ProductItem? itemSale) {
+  Widget firstChildPageForYou(Product? itemSale) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
       child: Column(
@@ -147,7 +149,7 @@ extension ExHomeChild on HomeScreenState {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8.0),
-            child: AppImage(imageUrl: itemSale?.image.toString(),height: 130, width: double.infinity),
+            child: AppImage(imageUrl: itemSale?.imagesProduct.first.imageUrl.toString(),height: 130, width: double.infinity),
           ),
 
           Padding(
@@ -159,7 +161,7 @@ extension ExHomeChild on HomeScreenState {
     );
   }
 
-  Widget secondChildPageForYou(ProductItem? itemSale) {
+  Widget secondChildPageForYou(Product? itemSale) {
     return Container(
       padding: const EdgeInsets.all(8),
       width: double.maxFinite,
@@ -169,14 +171,14 @@ extension ExHomeChild on HomeScreenState {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          UnitText(text: itemSale?.name.toString() ?? "Đồ ăn healthy buổi trưa", fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700),
+          UnitText(text: itemSale?.productName.toString() ?? "Đồ ăn healthy buổi trưa", fontFamily: Assets.sfProMedium, fontWeight: FontWeight.w700),
           const Spacer(),
           Row(
             children: [
               UnitText(text: "-50%", fontFamily: Assets.sfProMedium, fontSize: 13, color: Colors.green[500]),
               const SizedBox(width: 5),
               UnitText(
-                text: itemSale?.priceSale.isNotEmpty == true  ? "${formatVND(int.parse("${itemSale?.priceSale}"))} VNĐ" : "",
+                text: formatVND(itemSale?.productPriceSale ?? 0),
                 fontFamily: Assets.sfProMedium,
                 fontSize: 13,
                 lineThrough: true,
@@ -186,7 +188,7 @@ extension ExHomeChild on HomeScreenState {
             ],
           ),
           UnitText(
-            text: itemSale?.price.isNotEmpty == true ? "${formatVND(int.parse("${itemSale?.price}"))} VNĐ" : "",
+            text: formatVND(itemSale?.productPrice ?? 0),
             fontFamily: Assets.sfProMedium,
             fontWeight: FontWeight.w700,
           ),

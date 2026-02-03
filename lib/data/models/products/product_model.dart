@@ -1,5 +1,6 @@
 class Product {
   final int productId;
+  int quantity;
   final String productName;
   final double productPrice;
   final double productPriceSale;
@@ -10,18 +11,22 @@ class Product {
   final List<ImageProduct> imagesProduct;
 
   /// tiện lấy ảnh chính
-  String get primaryImage =>
-      imagesProduct
-          .firstWhere(
-            (e) => e.isPrimary,
-        orElse: () => imagesProduct.isNotEmpty
-            ? imagesProduct.first
-            : ImageProduct(id: 0, imageUrl: '', isPrimary: false),
-      )
-          .imageUrl;
+  String get primaryImage {
+    if (imagesProduct.isEmpty) return '';
+
+    final primary =
+    imagesProduct.where((e) => e.isPrimary).toList();
+
+    if (primary.isNotEmpty) {
+      return primary.first.imageUrl;
+    }
+
+    return imagesProduct.first.imageUrl;
+  }
 
   Product({
     required this.productId,
+    this.quantity = 1,
     required this.productName,
     required this.productPrice,
     required this.productPriceSale,

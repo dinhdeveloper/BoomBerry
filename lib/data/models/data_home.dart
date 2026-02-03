@@ -1,23 +1,57 @@
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/data/models/category/category_model.dart';
 
-class HomeCategoryItem {
-  final String idCategory;
-  final String assetPath;
-  final String label;
-  const HomeCategoryItem(this.idCategory, this.assetPath, this.label);
-}
-
-final List<HomeCategoryItem> itemsHomeCategory = [
-  HomeCategoryItem("ALL", Assets.iconCoffeeMenu, 'Tất cả'),
-  HomeCategoryItem("FOOD", Assets.iconFood, 'Món ăn'),
-  HomeCategoryItem("COFFEE", Assets.iconLatteArt, 'Cà phê'),
-  HomeCategoryItem("MILKTEA", Assets.iconSoftDrinks3d, 'Trà sữa'),
-  HomeCategoryItem("FLOAT", Assets.iconFloat, 'Đá xay'),
-  HomeCategoryItem("CAKE", Assets.iconChocolate, 'Bánh ngọt'),
-  HomeCategoryItem("CREAM", Assets.iconIceCream, 'Kem'),
-  HomeCategoryItem("OTHER", Assets.iconReceptionBell, 'Món thêm'),
+final List<Category> categoriesDummy = [
+  Category(
+    categoryId: 0,
+    categoryKey: 'ALL',
+    categoryName: 'Tất cả',
+    categoryImage: Assets.iconCoffeeMenu,
+  ),
+  Category(
+    categoryId: 1,
+    categoryKey: 'FOOD',
+    categoryName: 'Món ăn',
+    categoryImage: Assets.iconFood,
+  ),
+  Category(
+    categoryId: 2,
+    categoryKey: 'COFFEE',
+    categoryName: 'Cà phê',
+    categoryImage: Assets.iconLatteArt,
+  ),
+  Category(
+    categoryId: 3,
+    categoryKey: 'MILKTEA',
+    categoryName: 'Trà sữa',
+    categoryImage: Assets.iconSoftDrinks3d,
+  ),
+  Category(
+    categoryId: 4,
+    categoryKey: 'FLOAT',
+    categoryName: 'Đá xay',
+    categoryImage: Assets.iconFloat,
+  ),
+  Category(
+    categoryId: 5,
+    categoryKey: 'CAKE',
+    categoryName: 'Bánh ngọt',
+    categoryImage: Assets.iconChocolate,
+  ),
+  Category(
+    categoryId: 6,
+    categoryKey: 'CREAM',
+    categoryName: 'Kem',
+    categoryImage: Assets.iconIceCream,
+  ),
+  Category(
+    categoryId: 7,
+    categoryKey: 'OTHER',
+    categoryName: 'Món thêm',
+    categoryImage: Assets.iconReceptionBell,
+  ),
 ];
+
 
 final List<Map<String, dynamic>> itemsCategoryYouChoose = [
   {"title": "ĐỒ UỐNG CÀ PHÊ", "imageUrl": Assets.imgViewCoffeeCup},

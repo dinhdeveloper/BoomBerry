@@ -16,7 +16,7 @@ class HomeViewModel extends BaseViewModel {
   @override
   void initBaseData() {
     super.initBaseData();
-    fetchCategories();
+    //fetchCategories();
   }
 
   /// Fetch categories từ API

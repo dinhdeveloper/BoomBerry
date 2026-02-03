@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:remindbless/core/app_assets.dart';
 import 'package:remindbless/presentation/providers/background_controller.dart';
-import 'package:remindbless/presentation/screens/cart_screen.dart';
 import 'package:remindbless/presentation/screens/scan_qrcode_screen.dart';
 import 'package:remindbless/presentation/screens/search_screen.dart';
 import 'package:remindbless/presentation/screens/setting_screen.dart';
@@ -66,7 +65,7 @@ class _RootScreenState extends State<RootScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
       child: CommonGlass(
         height: 60,
-        colorBlur: Colors.white12,
+        colorBlur: Colors.white24,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -93,7 +92,7 @@ class _RootScreenState extends State<RootScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(icon, width: 24, height: 24,
-              color: isSelected ? null : Colors.grey,
+              color: isSelected ? null : Colors.black,
             ),
             UnitText(text: title, fontSize: 10,
               fontFamily: Assets.sfProLight,

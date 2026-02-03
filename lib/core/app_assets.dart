@@ -75,9 +75,14 @@ class Assets{
   static const String imgFoodItem = 'assets/images/img_food_item.jpg';
   static const String imgBgOpen = 'assets/images/bg_open.jpg';
   static const String imgBgAdmin = 'assets/images/bg_admin.jpg';
+  static const String imgBgAdmin0 = 'assets/images/bg_0.jpg';
   static const String imgBgAdmin2 = 'assets/images/bg_2.jpg';
   static const String imgBgAdmin3 = 'assets/images/bg_3.jpg';
   static const String imgBgAdmin4 = 'assets/images/bg_4.jpg';
+  static const String imgBgAdmin5 = 'assets/images/bg_5.jpg';
+  static const String imgBgAdmin6 = 'assets/images/bg_6.jpg';
+  static const String imgBgAdmin7 = 'assets/images/bg_7.jpg';
+  static const String imgBgAdmin8 = 'assets/images/bg_8.jpg';
 
 }
 
@@ -87,4 +92,5 @@ class DataAssets {
   static const String jsonNotificationList = 'assets/jsons/notification_list.json';
   static const String jsonProducts = 'assets/jsons/products_list.json';
   static const String jsonStory = 'assets/jsons/json_story.json';
+  static const String jsonBanks = 'assets/jsons/list_bank.json';
 }

@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:remindbless/core/app_assets.dart';
+import 'package:remindbless/core/base_screen.dart';
+import 'package:remindbless/data/models/banks/bank_model.dart';
+import 'package:remindbless/data/models/products/product_item.dart';
+import 'package:remindbless/data/models/products/product_model.dart';
 import 'package:remindbless/presentation/providers/background_controller.dart';
+import 'package:remindbless/presentation/utils/formatters.dart';
 import 'package:remindbless/presentation/widgets/common/app_image.dart';
 import 'package:remindbless/presentation/widgets/common/common_glass.dart';
 import 'package:remindbless/presentation/widgets/common/header_delegate.dart';
 import 'package:remindbless/presentation/widgets/common/unit_text.dart';
+import 'package:remindbless/viewmodel/cart_view_model.dart';
 
-class CartScreen extends StatefulWidget {
+class CartScreen extends BaseScreen<CartViewModel> {
   const CartScreen({super.key});
 
   @override
   State<CartScreen> createState() => _CartScreenState();
 }
 
-class _CartScreenState extends State<CartScreen> {
+
+class _CartScreenState  extends BaseScreenState<CartViewModel, CartScreen>  {
   int quantity = 1;
+  List<Bank> bankList = [];
 
   @override
-  Widget build(BuildContext context) {
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+  }
+
+  Future<void> loadBanks() async {
+    bankList = await ProductRepository.loadBanks();
+    if (!mounted) return;
+    setState(() {});
+  }
+
+
+  @override
+  Widget buildChild(BuildContext context) {
     final bgController = context.watch<BackgroundController>();
     return Container(
       decoration: BoxDecoration(
@@ -39,7 +59,11 @@ class _CartScreenState extends State<CartScreen> {
               /// ===== CART LIST =====
               SliverPadding(
                 padding: const EdgeInsets.all(16),
-                sliver: SliverList(delegate: SliverChildBuilderDelegate((context, index) => _cartItem(index: index), childCount: 10)),
+                sliver: SliverList(delegate: SliverChildBuilderDelegate(
+                      (context, index) =>
+                      _cartItem(provider.items[index]),
+                  childCount: provider.items.length,
+                ),),
               ),
             ],
           ),
@@ -52,9 +76,9 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   /// ================= CART ITEM =================
-  Widget _cartItem({required int index}) {
+  Widget _cartItem(Product product) {
     return Dismissible(
-      key: ValueKey(index),
+      key: ValueKey(product.productId),
       direction: DismissDirection.endToStart,
       background: Container(
         margin: const EdgeInsets.only(bottom: 12),
@@ -77,7 +101,8 @@ class _CartScreenState extends State<CartScreen> {
       child: Padding(
         padding: const EdgeInsets.only(bottom: 12),
         child: CommonGlass(
-          height: 105,
+          blur: 40,
+          //height: 110,
           //margin: const EdgeInsets.only(bottom: 12),
           paddingChild: 8,
           // decoration: BoxDecoration(
@@ -97,8 +122,7 @@ class _CartScreenState extends State<CartScreen> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: AppImage(
-                  imageUrl:
-                  "https://images.unsplash.com/photo-1678016935857-396bfff65aae",
+                  imageUrl: product.imagesProduct.isNotEmpty ? product.imagesProduct[0].imageUrl : Assets.imgViewCoffeeCup,
                   width: 80,
                   height: 80,
                 ),
@@ -109,10 +133,11 @@ class _CartScreenState extends State<CartScreen> {
               /// INFO
               Expanded(
                 child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const UnitText(
-                      text: "Cà phê sữa đá",
+                    UnitText(
+                      text: product.productName,
                       fontFamily: Assets.sfProLight,
                     ),
 
@@ -120,18 +145,18 @@ class _CartScreenState extends State<CartScreen> {
 
                     /// PRICE
                     Row(
-                      children: const [
+                      children: [
                         UnitText(
-                          text: "25.000đ",
+                          text: formatVND(product.productPriceSale),
                           fontSize: 16,
                           color: Colors.orange,
                           fontFamily: Assets.sfProBold,
                         ),
                         SizedBox(width: 8),
                         UnitText(
-                          text: "35.000đ",
+                          text: formatVND(product.productPrice),
                           fontSize: 13,
-                          color: Colors.grey,
+                          color: Colors.black54,
                           lineThrough: true,
                           fontFamily: Assets.sfProRegular,
                         ),
@@ -145,25 +170,20 @@ class _CartScreenState extends State<CartScreen> {
                       children: [
                         _qtyButton(
                           icon: Icons.remove,
-                          onTap: () {
-                            if (quantity > 1) {
-                              setState(() => quantity--);
-                            }
-                          },
+                          onTap: () => provider.decrease(product),
                         ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 12),
                           child: UnitText(
-                            text: "$quantity",
+                            text: "${product.quantity}",
                             fontSize: 15,
                             fontFamily: Assets.sfProMedium,
                           ),
                         ),
+
                         _qtyButton(
                           icon: Icons.add,
-                          onTap: () {
-                            setState(() => quantity++);
-                          },
+                          onTap: () => provider.increase(product),
                         ),
                       ],
                     ),
@@ -207,10 +227,10 @@ class _CartScreenState extends State<CartScreen> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
-                children: const [
-                  UnitText(text: "Tổng thanh toán", fontSize: 13, color: Colors.white),
-                  SizedBox(height: 4),
-                  UnitText(text: "75.000đ", fontSize: 18, color: Colors.orange, fontFamily: Assets.sfProBold),
+                children: [
+                  const UnitText(text: "Tổng thanh toán", fontSize: 13, color: Colors.white),
+                  const SizedBox(height: 4),
+                  UnitText(text: formatVND(provider.totalAmount), fontSize: 18, color: Colors.orange, fontFamily: Assets.sfProBold),
                 ],
               ),
 
@@ -218,7 +238,14 @@ class _CartScreenState extends State<CartScreen> {
 
               /// CHECKOUT BUTTON
               ElevatedButton(
-                onPressed: () {},
+                onPressed: (){
+                  loadBanks().then((value) async {
+                    final bank = await showBankBottomSheet(context, bankList);
+                    if (bank != null) {
+                      debugPrint("Selected bank: ${bank.shortName} - BIN: ${bank.bin}");
+                    }
+                  });
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.orange,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -232,4 +259,116 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
+
+  Future<Bank?> showBankBottomSheet(
+      BuildContext context,
+      List<Bank> banks,
+      ) {
+    return showModalBottomSheet<Bank>(
+      context: context,
+      backgroundColor: Colors.transparent,
+      isScrollControlled: true,
+      builder: (_) {
+        return FractionallySizedBox(
+          heightFactor: 0.66, // ⭐ 2/3 màn hình
+          child: BankBottomSheet(banks: banks),
+        );
+      },
+    );
+  }
+
 }
+
+class BankBottomSheet extends StatelessWidget {
+  final List<Bank> banks;
+
+  const BankBottomSheet({super.key, required this.banks});
+
+  @override
+  Widget build(BuildContext context) {
+    return CommonGlass(
+      radius: 16,
+      paddingChild: 12,
+      colorBlur: Colors.white38,
+      child: Column(
+        children: [
+          /// Drag handle
+          Container(
+            width: 40,
+            height: 4,
+            margin: const EdgeInsets.only(bottom: 12),
+            decoration: BoxDecoration(
+              color: Colors.white54,
+              borderRadius: BorderRadius.circular(2),
+            ),
+          ),
+
+          UnitText(
+            text: "Chọn ngân hàng",
+            fontSize: 16,
+            fontFamily: Assets.sfProBold,
+            color: Colors.orange,
+          ),
+
+          const SizedBox(height: 12),
+
+          /// LIST SCROLL
+          Expanded(
+            child: ListView.separated(
+              itemCount: banks.length,
+              separatorBuilder: (_, __) => const Divider(height: 1,color: Colors.grey),
+              itemBuilder: (context, index) {
+                final bank = banks[index];
+
+                return InkWell(
+                  onTap: () => Navigator.pop(context, bank),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 10),
+                    child: Row(
+                      children: [
+                        ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: Image.network(
+                            bank.logo,
+                            width: 50,
+                            height: 50,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              UnitText(
+                                text: bank.shortName,
+                                fontSize: 15,
+                                fontFamily: Assets.sfProMedium,
+                              ),
+                              const SizedBox(height: 2),
+                              UnitText(
+                                text: bank.name,
+                                fontSize: 13,
+                                color: Colors.white70,
+                                maxLines: 2,
+                              ),
+                            ],
+                          ),
+                        ),
+                        UnitText(
+                          text: bank.code,
+                          fontSize: 12,
+                          color: Colors.white54,
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+

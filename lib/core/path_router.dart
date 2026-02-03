@@ -7,6 +7,10 @@ class PathRouter {
   static const String adminCategories = "adminCategories";
   static const String adminProducts = "adminProducts";
 
+  // ///FITNESS
+  // static const String rootFitness = "rootFitness";
+  // static const String homeFitnessScreen = "homeFitnessScreen";
+
   ///MOBILE
   static const String rootScreen = "rootScreen";
   static const String loginScreen = "login";

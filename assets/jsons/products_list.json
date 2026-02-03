@@ -1,200 +1,265 @@
 [
   {
-    "id": "1",
-    "name": "Cà phê sữa đá truyền thống",
-    "image": "https://images.unsplash.com/photo-1678016935857-396bfff65aae?w=900&auto=format&fit=crop&q=60",
-    "price": "29000",
-    "priceSale": "25000",
-    "salePercent": 14,
-    "soldCount": 1240,
-    "location": "STORE",
-    "categoryId": "COFFEE"
+    "productId": 1,
+    "productName": "Latte nóng",
+    "productPrice": 45000.0,
+    "productPriceSale": 39000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 120,
+    "productLocationSale": "STORE",
+    "categoryKey": "COFFEE",
+    "imagesProduct": [
+      { "id": 7, "imageUrl": "assets/images/view_coffee_cup.jpg" },
+      { "id": 8, "imageUrl": "assets/images/view_coffee_cup_1.jpg" },
+      { "id": 9, "imageUrl": "assets/images/view_coffee_cup_2.jpg" },
+      { "id": 10, "imageUrl": "assets/images/view_coffee_cup_3.jpg" }
+    ]
   },
   {
-    "id": "2",
-    "name": "Cà phê đen đá đậm vị",
-    "image": "https://images.unsplash.com/photo-1654546518361-eef83e447521?w=900&auto=format&fit=crop&q=60",
-    "price": "25000",
-    "priceSale": "25000",
-    "salePercent": 0,
-    "soldCount": 980,
-    "location": "STORE",
-    "categoryId": "COFFEE"
+    "productId": 2,
+    "productName": "Latte nóng",
+    "productPrice": 45000.0,
+    "productPriceSale": 39000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 120,
+    "productLocationSale": "STORE",
+    "categoryKey": "COFFEE",
+    "imagesProduct": [
+      { "id": 11, "imageUrl": "assets/images/imgJuiceCategory.jpg" },
+      { "id": 12, "imageUrl": "assets/images/view_coffee_cup_1.jpg" },
+      { "id": 13, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "3",
-    "name": "Bạc xỉu Sài Gòn",
-    "image": "https://images.unsplash.com/photo-1765100214310-81fb4c062b25?w=900&auto=format&fit=crop&q=60",
-    "price": "32000",
-    "priceSale": "29000",
-    "salePercent": 9,
-    "soldCount": 860,
-    "location": "STORE",
-    "categoryId": "COFFEE"
+    "productId": 3,
+    "productName": "Cappuccino",
+    "productPrice": 48000.0,
+    "productPriceSale": 42000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 95,
+    "productLocationSale": "STORE",
+    "categoryKey": "COFFEE",
+    "imagesProduct": [
+      { "id": 14, "imageUrl": "assets/images/view_coffee_cup_1.jpg" }
+    ]
   },
   {
-    "id": "4",
-    "name": "Latte nóng Ý",
-    "image": "https://images.unsplash.com/photo-1543826173-70651703c5a4?w=900&auto=format&fit=crop&q=60",
-    "price": "39000",
-    "priceSale": "39000",
-    "salePercent": 0,
-    "soldCount": 540,
-    "location": "STORE",
-    "categoryId": "COFFEE"
+    "productId": 4,
+    "productName": "Americano",
+    "productPrice": 40000.0,
+    "productPriceSale": 35000.0,
+    "productSalePercent": 10,
+    "productSoldCount": 150,
+    "productLocationSale": "STORE",
+    "categoryKey": "COFFEE",
+    "imagesProduct": [
+      { "id": 15, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "5",
-    "name": "Cappuccino Ý",
-    "image": "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=900&auto=format&fit=crop&q=60",
-    "price": "42000",
-    "priceSale": "42000",
-    "salePercent": 0,
-    "soldCount": 430,
-    "location": "STORE",
-    "categoryId": "COFFEE"
+    "productId": 5,
+    "productName": "Mocha",
+    "productPrice": 52000.0,
+    "productPriceSale": 46000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 80,
+    "productLocationSale": "STORE",
+    "categoryKey": "COFFEE",
+    "imagesProduct": [
+      { "id": 16, "imageUrl": "assets/images/view_coffee_cup.jpg" }
+    ]
   },
   {
-    "id": "6",
-    "name": "Trà đào cam sả mát lạnh",
-    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=900&auto=format&fit=crop&q=60",
-    "price": "35000",
-    "priceSale": "32000",
-    "salePercent": 9,
-    "soldCount": 1120,
-    "location": "ONLINE",
-    "categoryId": "MILKTEA"
+    "productId": 6,
+    "productName": "Trà sữa trân châu",
+    "productPrice": 38000.0,
+    "productPriceSale": 32000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 200,
+    "productLocationSale": "STORE",
+    "categoryKey": "MILKTEA",
+    "imagesProduct": [
+      { "id": 17, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "7",
-    "name": "Trà sữa truyền thống",
-    "image": "https://images.unsplash.com/photo-1685644291576-ea3d97fb0a67?q=80&w=1160&auto=format&fit=crop",
-    "price": "30000",
-    "priceSale": "30000",
-    "salePercent": 0,
-    "soldCount": 1340,
-    "location": "ONLINE",
-    "categoryId": "MILKTEA"
+    "productId": 7,
+    "productName": "Trà sữa matcha",
+    "productPrice": 42000.0,
+    "productPriceSale": 36000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 140,
+    "productLocationSale": "STORE",
+    "categoryKey": "MILKTEA",
+    "imagesProduct": [
+      { "id": 18, "imageUrl": "assets/images/view_coffee_cup.jpg" }
+    ]
   },
   {
-    "id": "8",
-    "name": "Trà sữa matcha Nhật",
-    "image": "https://images.unsplash.com/photo-1587080413959-06b859fb107d?q=80&w=1184&auto=format&fit=crop",
-    "price": "36000",
-    "priceSale": "36000",
-    "salePercent": 0,
-    "soldCount": 760,
-    "location": "ONLINE",
-    "categoryId": "MILKTEA"
+    "productId": 8,
+    "productName": "Trà sữa socola",
+    "productPrice": 42000.0,
+    "productPriceSale": 36000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 110,
+    "productLocationSale": "STORE",
+    "categoryKey": "MILKTEA",
+    "imagesProduct": [
+      { "id": 19, "imageUrl": "assets/images/view_coffee_cup_1.jpg" }
+    ]
   },
   {
-    "id": "9",
-    "name": "Trà vải thanh mát",
-    "image": "https://images.unsplash.com/photo-1765100214310-81fb4c062b25?w=900&auto=format&fit=crop&q=60",
-    "price": "34000",
-    "priceSale": "34000",
-    "salePercent": 0,
-    "soldCount": 610,
-    "location": "STORE",
-    "categoryId": "MILKTEA"
+    "productId": 9,
+    "productName": "Đá xay chocolate",
+    "productPrice": 49000.0,
+    "productPriceSale": 43000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 90,
+    "productLocationSale": "STORE",
+    "categoryKey": "FLOAT",
+    "imagesProduct": [
+      { "id": 20, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "10",
-    "name": "Sinh tố xoài tươi",
-    "image": "https://images.unsplash.com/photo-1543826173-70651703c5a4?w=900&auto=format&fit=crop&q=60",
-    "price": "39000",
-    "priceSale": "39000",
-    "salePercent": 0,
-    "soldCount": 480,
-    "location": "STORE",
-    "categoryId": "FLOAT"
+    "productId": 10,
+    "productName": "Đá xay cookie",
+    "productPrice": 52000.0,
+    "productPriceSale": 46000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 75,
+    "productLocationSale": "STORE",
+    "categoryKey": "FLOAT",
+    "imagesProduct": [
+      { "id": 21, "imageUrl": "assets/images/view_coffee_cup_1.jpg" }
+    ]
   },
   {
-    "id": "11",
-    "name": "Sinh tố dâu mát lạnh",
-    "image": "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=900&auto=format&fit=crop&q=60",
-    "price": "39000",
-    "priceSale": "39000",
-    "salePercent": 0,
-    "soldCount": 520,
-    "location": "STORE",
-    "categoryId": "FLOAT"
+    "productId": 11,
+    "productName": "Đá xay matcha",
+    "productPrice": 52000.0,
+    "productPriceSale": 46000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 70,
+    "productLocationSale": "STORE",
+    "categoryKey": "FLOAT",
+    "imagesProduct": [
+      { "id": 22, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "12",
-    "name": "Socola đá xay",
-    "image": "https://images.unsplash.com/photo-1678016935857-396bfff65aae?w=900&auto=format&fit=crop&q=60",
-    "price": "45000",
-    "priceSale": "41000",
-    "salePercent": 9,
-    "soldCount": 690,
-    "location": "STORE",
-    "categoryId": "FLOAT"
+    "productId": 12,
+    "productName": "Bánh tiramisu",
+    "productPrice": 55000.0,
+    "productPriceSale": 49000.0,
+    "productSalePercent": 10,
+    "productSoldCount": 65,
+    "productLocationSale": "STORE",
+    "categoryKey": "CAKE",
+    "imagesProduct": [
+      { "id": 23, "imageUrl": "assets/images/view_coffee_cup.jpg" }
+    ]
   },
   {
-    "id": "13",
-    "name": "Bánh tiramisu Ý",
-    "image": "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=900&auto=format&fit=crop&q=60",
-    "price": "45000",
-    "priceSale": "45000",
-    "salePercent": 0,
-    "soldCount": 360,
-    "location": "STORE",
-    "categoryId": "CAKE"
+    "productId": 13,
+    "productName": "Bánh chocolate",
+    "productPrice": 52000.0,
+    "productPriceSale": 46000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 80,
+    "productLocationSale": "STORE",
+    "categoryKey": "CAKE",
+    "imagesProduct": [
+      { "id": 24, "imageUrl": "assets/images/food_desserts.jpg" }
+    ]
   },
   {
-    "id": "14",
-    "name": "Bánh cheesecake phô mai",
-    "image": "https://images.unsplash.com/photo-1685644291576-ea3d97fb0a67?q=80&w=1160&auto=format&fit=crop",
-    "price": "48000",
-    "priceSale": "48000",
-    "salePercent": 0,
-    "soldCount": 410,
-    "location": "STORE",
-    "categoryId": "CAKE"
+    "productId": 14,
+    "productName": "Bánh cheesecake",
+    "productPrice": 58000.0,
+    "productPriceSale": 52000.0,
+    "productSalePercent": 10,
+    "productSoldCount": 55,
+    "productLocationSale": "STORE",
+    "categoryKey": "CAKE",
+    "imagesProduct": [
+      { "id": 25, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
   },
   {
-    "id": "15",
-    "name": "Bánh su kem Pháp",
-    "image": "https://images.unsplash.com/photo-1587080413959-06b859fb107d?q=80&w=1184&auto=format&fit=crop",
-    "price": "25000",
-    "priceSale": "25000",
-    "salePercent": 0,
-    "soldCount": 890,
-    "location": "STORE",
-    "categoryId": "CAKE"
+    "productId": 15,
+    "productName": "Kem vani",
+    "productPrice": 30000.0,
+    "productPriceSale": 26000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 130,
+    "productLocationSale": "STORE",
+    "categoryKey": "CREAM",
+    "imagesProduct": [
+      { "id": 26, "imageUrl": "assets/images/img_food_item.jpg" }
+    ]
   },
   {
-    "id": "17",
-    "name": "Kem vani mát lạnh",
-    "image": "https://images.unsplash.com/photo-1654546518361-eef83e447521?w=900&auto=format&fit=crop&q=60",
-    "price": "20000",
-    "priceSale": "20000",
-    "salePercent": 0,
-    "soldCount": 760,
-    "location": "STORE",
-    "categoryId": "CREAM"
+    "productId": 16,
+    "productName": "Kem socola",
+    "productPrice": 32000.0,
+    "productPriceSale": 28000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 115,
+    "productLocationSale": "STORE",
+    "categoryKey": "CREAM",
+    "imagesProduct": [
+      { "id": 27, "imageUrl": "assets/images/view_coffee_cup_1.jpg" }
+    ]
   },
   {
-    "id": "20",
-    "name": "Khoai tây chiên giòn",
-    "image": "https://images.unsplash.com/photo-1604909052743-94e838986d24?w=900&auto=format&fit=crop&q=60",
-    "price": "25000",
-    "priceSale": "25000",
-    "salePercent": 0,
-    "soldCount": 1020,
-    "location": "STORE",
-    "categoryId": "FOOD"
+    "productId": 17,
+    "productName": "Kem matcha",
+    "productPrice": 35000.0,
+    "productPriceSale": 30000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 95,
+    "productLocationSale": "STORE",
+    "categoryKey": "CREAM",
+    "imagesProduct": [
+      { "id": 28, "imageUrl": "assets/images/view_coffee_cup.jpg" }
+    ]
   },
   {
-    "id": "23",
-    "name": "Trân châu đen topping",
-    "image": "https://images.unsplash.com/photo-1765100214310-81fb4c062b25?w=900&auto=format&fit=crop&q=60",
-    "price": "8000",
-    "priceSale": "8000",
-    "salePercent": 0,
-    "soldCount": 215,
-    "location": "ONLINE",
-    "categoryId": "OTHER"
+    "productId": 18,
+    "productName": "Khoai tây chiên",
+    "productPrice": 25000.0,
+    "productPriceSale": 22000.0,
+    "productSalePercent": 12,
+    "productSoldCount": 180,
+    "productLocationSale": "STORE",
+    "categoryKey": "OTHER",
+    "imagesProduct": [
+      { "id": 29, "imageUrl": "assets/images/view_coffee_cup_2.jpg" }
+    ]
+  },
+  {
+    "productId": 19,
+    "productName": "Bánh quy bơ",
+    "productPrice": 20000.0,
+    "productPriceSale": 18000.0,
+    "productSalePercent": 10,
+    "productSoldCount": 160,
+    "productLocationSale": "STORE",
+    "categoryKey": "OTHER",
+    "imagesProduct": [
+      { "id": 30, "imageUrl": "assets/images/view_coffee_cup_1.jpg" }
+    ]
+  },
+  {
+    "productId": 20,
+    "productName": "Sandwich trứng",
+    "productPrice": 35000.0,
+    "productPriceSale": 30000.0,
+    "productSalePercent": 15,
+    "productSoldCount": 90,
+    "productLocationSale": "STORE",
+    "categoryKey": "OTHER",
+    "imagesProduct": []
   }
 ]

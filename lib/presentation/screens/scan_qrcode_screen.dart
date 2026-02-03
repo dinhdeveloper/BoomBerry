@@ -65,7 +65,7 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
                 height: 100,
                 borderRadius: 10,
                 borderWidth: 1,
-                gradientColors: [Colors.yellow, Colors.amber.shade400, Colors.orangeAccent],
+                gradientColors: [Colors.redAccent, Colors.amber.shade400, Colors.orangeAccent],
                 child: Padding(padding: const EdgeInsets.symmetric(horizontal: 20), child: _buildBarcodeWidget()),
               ),
             ),
@@ -154,27 +154,29 @@ class _ScanQrCodeScreenState extends State<ScanQrCodeScreen> {
   Widget _buildBarcodeWidget() {
     final scannedBarcode = "TCD123456789029374";
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        barcode_widget.BarcodeWidget(
-          barcode: barcode_widget.Barcode.code128(),
-          data: scannedBarcode,
-          width: double.infinity,
-          height: 50,
-          color: Colors.black,
-          drawText: false,
-        ),
-        const SizedBox(height: 4),
-        // Chữ số tách ra
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 50),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: scannedBarcode.split('').map((c) => Text(c, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold))).toList(),
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          barcode_widget.BarcodeWidget(
+            barcode: barcode_widget.Barcode.code128(),
+            data: scannedBarcode,
+            width: double.infinity,
+            height: 50,
+            color: Colors.black,
+            drawText: false,
           ),
-        ),
-      ],
+          const SizedBox(height: 4),
+          // Chữ số tách ra
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 50),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: scannedBarcode.split('').map((c) => Text(c, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold))).toList(),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

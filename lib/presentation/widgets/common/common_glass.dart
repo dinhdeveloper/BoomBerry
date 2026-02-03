@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class CommonGlass extends StatelessWidget {
   final double? width;
   final double? height;
-  final Color? colorBlur;
   final double radius;
   final double blur;
+  final Color? colorBlur;
   final double borderWidth;
   final double maskFilter;
   final Widget child;
@@ -28,48 +28,58 @@ class CommonGlass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width, // null sẽ chiếm toàn bộ không gian ngang
-      height: height, // null sẽ chiếm toàn bộ không gian dọc
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(radius),
-        child: Stack(
-          children: [
-            // Frosted blur
-            BackdropFilter(
-              filter: ImageFilter.blur(
-                sigmaX: blur,
-                sigmaY: blur,
-              ),
-              child: Container(
-                color: colorBlur,
-                width: double.infinity, // Chiếm toàn bộ chiều ngang
-                height: double.infinity, // Chiếm toàn bộ chiều dọc
+    final glass = ClipRRect(
+      borderRadius: BorderRadius.circular(radius),
+      child: Stack(
+        fit: StackFit.passthrough,
+        children: [
+          // Blur
+          Container(
+            decoration: BoxDecoration(
+              color: Colors.white60,
+              borderRadius: BorderRadius.circular(radius),
+              border: Border.all(
+                color: Colors.white.withOpacity(0.25),
+                width: borderWidth,
               ),
             ),
+          ),
 
-            // Gradient corner border painter
-            Positioned.fill(
-              child: CustomPaint(
-                painter: CornerBorderPainter(
-                  radius: radius,
-                  borderWidth: borderWidth,
-                  maskFilter: maskFilter,
-                ),
+          // Border
+          Positioned.fill(
+            child: CustomPaint(
+              painter: CornerBorderPainter(
+                radius: radius,
+                borderWidth: borderWidth,
+                maskFilter: maskFilter,
               ),
             ),
+          ),
 
-            // Content
-            Center(child: Padding(
-              padding: EdgeInsets.all(paddingChild),
-              child: child,
-            )),
-          ],
-        ),
+          // Content
+          Padding(
+            padding: EdgeInsets.all(paddingChild),
+            child: child,
+          ),
+        ],
       ),
     );
+
+    // ⭐ QUAN TRỌNG
+    if (height != null || width != null) {
+      return SizedBox(
+        width: width,
+        height: height,
+        child: glass,
+      );
+    }
+
+    // Không set height → min theo content
+    return glass;
   }
 }
+
+
 
 class CornerBorderPainter extends CustomPainter {
   final double radius;

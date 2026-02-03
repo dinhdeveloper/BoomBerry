@@ -4,7 +4,7 @@ import 'package:remindbless/core/app_assets.dart';
 class CommonBackgroundScaffold extends StatelessWidget {
   const CommonBackgroundScaffold({
     super.key,
-    this.backgroundImage = Assets.imgBgAdmin,
+    this.backgroundImage = Assets.imgBgAdmin0,
     required this.body,
     this.extendBody = true,
     this.resizeToAvoidBottomInset = true,
